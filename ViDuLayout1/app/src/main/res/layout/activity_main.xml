@@ -7,13 +7,46 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/colLayout1"
+        android:layout_width="389dp"
+        android:layout_height="712dp"
+        android:background="#B0C3E4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/txtTextView1"
+            android:layout_width="161dp"
+            android:layout_height="84dp"
+            android:layout_marginTop="100dp"
+            android:background="#A09191"
+            android:scrollHorizontally="false"
+            android:text="Ở dưới là nút bấm"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColorHighlight="#BC3636"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnHello"
+            android:layout_width="161dp"
+            android:layout_height="111dp"
+            android:layout_marginTop="76dp"
+            android:text="Hello, QuanggCK"
+            android:textColorLink="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.516"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTextView1" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
