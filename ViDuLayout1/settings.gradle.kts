@@ -19,5 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ViduHello"
+rootProject.name = "ViDuLayout1"
 include(":app")
+ 
