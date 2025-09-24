@@ -8,12 +8,11 @@
     tools:context=".MainActivity">
 
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/colLayout1"
         android:layout_width="389dp"
         android:layout_height="712dp"
-        android:background="#B0C3E4"
+        android:background="@drawable/nen1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,6 +40,7 @@
             android:layout_width="161dp"
             android:layout_height="111dp"
             android:layout_marginTop="76dp"
+            android:background="@drawable/nen1"
             android:text="Hello, QuanggCK"
             android:textColorLink="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
