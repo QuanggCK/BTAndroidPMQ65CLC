@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="402dp"
+        android:layout_height="725dp"
+        android:background="#211A6B"
+        tools:layout_editor_absoluteX="4dp"
+        tools:layout_editor_absoluteY="3dp">
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="Nhập số sau:"
+            android:textColor="#FBF7F7"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="29dp"
+            tools:layout_editor_absoluteY="332dp" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="Đáp án:"
+            android:textColor="#FBF7F7"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="78dp"
+            tools:layout_editor_absoluteY="635dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/adlam_display"
+            android:text="A BASIC CALCULATOR"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="46dp"
+            tools:layout_editor_absoluteY="91dp" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/adlam_display"
+            android:text="QuanggCK"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:layout_editor_absoluteX="137dp" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="Nhập số đầu:"
+            android:textColor="#FBF7F7"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="29dp"
+            tools:layout_editor_absoluteY="259dp" />
+
+        <EditText
+            android:id="@+id/edt_numbera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Số"
+            android:textColor="#FFFFFF"
+            tools:layout_editor_absoluteX="152dp"
+            tools:layout_editor_absoluteY="251dp" />
+
+        <EditText
+            android:id="@+id/edt_numberb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Số"
+            android:textColor="#FFFFFF"
+            tools:layout_editor_absoluteX="152dp"
+            tools:layout_editor_absoluteY="324dp" />
+
+        <EditText
+            android:id="@+id/edt_kqua"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:textColor="#FFFFFF"
+            tools:layout_editor_absoluteX="152dp"
+            tools:layout_editor_absoluteY="624dp" />
+
+        <Button
+            android:id="@+id/btn_plus"
+            android:layout_width="73dp"
+            android:layout_height="72dp"
+            android:background="@mipmap/plus_icon"
+            tools:layout_editor_absoluteX="38dp"
+            tools:layout_editor_absoluteY="419dp" />
+
+        <Button
+            android:id="@+id/btn_multiply"
+            android:layout_width="73dp"
+            android:layout_height="72dp"
+            android:background="@mipmap/mutiply_icon"
+            tools:layout_editor_absoluteX="38dp"
+            tools:layout_editor_absoluteY="518dp" />
+
+        <Button
+            android:id="@+id/btn_divide"
+            android:layout_width="73dp"
+            android:layout_height="72dp"
+            android:background="@mipmap/divide_icon"
+            tools:layout_editor_absoluteX="137dp"
+            tools:layout_editor_absoluteY="517dp" />
+
+        <Button
+            android:id="@+id/btn_minus"
+            android:layout_width="73dp"
+            android:layout_height="72dp"
+            android:background="@mipmap/minus_icon"
+            tools:layout_editor_absoluteX="137dp"
+            tools:layout_editor_absoluteY="418dp" />
+
+        <Button
+            android:id="@+id/btn_calculate"
+            android:layout_width="123dp"
+            android:layout_height="120dp"
+            android:drawableStart="@drawable/calculator_icon"
+            android:text="Tính"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="239dp"
+            tools:layout_editor_absoluteY="445dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
