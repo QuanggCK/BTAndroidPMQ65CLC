@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "clc65.quanggck.basic_gui_simplemath"
-    compileSdk = 36
+    namespace = "clc65.quanggck.th_basicgui_bmi"
+    compileSdk = 35
 
     defaultConfig {
-        applicationId = "clc65.quanggck.basic_gui_simplemath"
+        applicationId = "clc65.quanggck.th_basicgui_bmi"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
