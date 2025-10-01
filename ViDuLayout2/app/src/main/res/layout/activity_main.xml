@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/mainlayout"
+    android:background="#FFF">
+
+    <TextView
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="#B7CC39"
+        android:text="VdLayout 2"
+        android:textColor="@color/white"
+        android:textSize="30sp">
+
+    </TextView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:background="#EF6C00"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_weight="1"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:id="@+id/btnCN1"
+            android:text="CN1">
+        </Button>
+        <Button
+            android:layout_width="100dp"
+            android:layout_weight="1"
+            android:layout_height="100dp"
+            android:id="@+id/btnCN2"
+            android:text="CN2">
+        </Button>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#CCC"
+        android:gravity="center"
+        android:layout_margin="10dp">
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/btnCN3"
+            android:text="CN3"
+            android:layout_margin="5dp">
+        </Button>
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/btnCN4"
+            android:text="CN4"
+            android:layout_margin="5dp"/>
+    </LinearLayout>
+</LinearLayout>
