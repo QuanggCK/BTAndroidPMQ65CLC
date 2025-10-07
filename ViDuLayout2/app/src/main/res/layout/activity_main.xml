@@ -1,0 +1,11 @@
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+    <TextView android:background="#F00000" android:layout_width="match_parent" android:layout_height="100dp" android:gravity="center" android:textSize="30dp" android:text="CHÀO MỪNG" android:textColor="#FABB00"/>
+    <LinearLayout android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <Button android:layout_width="100dp" android:layout_margin="10dp" android:id="@+id/btnCN1" android:layout_weight="1" android:layout_height="195dp" android:text="CN1"/>
+        <Button android:layout_width="100dp" android:layout_margin="11dp" android:id="@+id/btnCN2" android:layout_weight="1" android:layout_height="195dp" android:text="CN2"/>
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <Button android:layout_width="100dp" android:layout_margin="10dp" android:id="@+id/btnCN3" android:layout_weight="1" android:layout_height="195dp" android:text="CN3"/>
+        <Button android:layout_width="100dp" android:layout_margin="10dp" android:id="@+id/btnCN4" android:layout_weight="1" android:layout_height="195dp" android:text="CN4"/>
+    </LinearLayout>
+</LinearLayout>
