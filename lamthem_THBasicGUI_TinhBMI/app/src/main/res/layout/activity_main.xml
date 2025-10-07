@@ -15,10 +15,163 @@
         android:layout_marginTop="3dp"
         android:layout_marginEnd="3dp"
         android:layout_marginBottom="3dp"
+        android:background="#1592FE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="119dp"
+            android:layout_marginTop="39dp"
+            android:layout_marginEnd="120dp"
+            android:fontFamily="@font/abyssinica_sil"
+            android:text="BMI CHECK"
+            android:textColor="#FFE6E6"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="160dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="263dp"
+            android:text="Input your height:"
+            android:textColor="#FFFFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.346"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="160dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="229dp"
+            android:text="Input your weight:"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_height" />
+
+        <EditText
+            android:id="@+id/edt_height"
+            android:layout_width="256dp"
+            android:layout_height="51dp"
+            android:layout_marginStart="74dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="75dp"
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:hint="Input the height"
+            android:inputType="text"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="#FFFFFF"
+
+            android:textColorHint="#FFFFFF"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <EditText
+            android:id="@+id/edt_weight"
+            android:layout_width="256dp"
+            android:layout_height="51dp"
+            android:layout_marginStart="74dp"
+            android:layout_marginTop="21dp"
+
+            android:layout_marginEnd="75dp"
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:hint="Input the weight"
+            android:inputType="text"
+            android:textColor="#FFFFFF"
+
+            android:textColorHighlight="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <CheckBox
+            android:id="@+id/cbox_asian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="138dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="139dp"
+            android:buttonTint="#7BCBFF"
+            android:text="Are you Asian?"
+            android:textColor="#FFFFFF"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_weight" />
+
+        <TextView
+            android:id="@+id/cjd"
+            android:layout_width="239dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="87dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="79dp"
+            android:text="Congratulation! - You are:"
+            android:textColor="#1B5B89"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_calculate" />
+
+        <Button
+            android:id="@+id/btn_calculate"
+            android:layout_width="231dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="87dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="87dp"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="#31BCCF"
+            android:fontFamily="@font/abyssinica_sil"
+            android:text="Start Calculating"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cbox_asian" />
+
+        <TextView
+            android:id="@+id/tv_result"
+            android:layout_width="370dp"
+            android:layout_height="104dp"
+            android:layout_marginStart="171dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="175dp"
+            android:textAlignment="center"
+            android:textColor="#31BCCF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cjd" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
