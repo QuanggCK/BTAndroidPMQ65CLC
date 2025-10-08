@@ -9,7 +9,7 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="405dp"
+        android:layout_width="match_parent"
         android:layout_height="725dp"
         android:layout_marginStart="3dp"
         android:layout_marginTop="3dp"
@@ -31,7 +31,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
+        <Button
             android:id="@+id/btn_sayHello"
             android:layout_width="115dp"
             android:layout_height="67dp"
