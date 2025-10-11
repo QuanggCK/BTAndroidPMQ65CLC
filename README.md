@@ -33,7 +33,7 @@ This Android application demonstrates how to use **Listeners** in two ways (**Na
 ---
 
 ## LoginFigmaScreen 
-This assignment goals is to replicate the original Figma and transform it in the Android Studio
-<a href="https://github.com/QuanggCK" target="_blank">Link Figma</a>
+This assignment goals is to replicate the original Figma and transform it in the Android Studio.
+<a href="https://www.figma.com/design/HO7EOnYSwiIhIhcT64MCoN/Untitled?node-id=18-1658&t=zMQZILJOb8NdonEO-1" target="_blank">Link Figma</a>
 
   
