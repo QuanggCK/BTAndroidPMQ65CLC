@@ -1,4 +1,39 @@
 # BTAndroidPMQ65CLC
 Welcome to my repository about Android Programming. At this repository, you can find all my example in my code as well as the image of the app.
 
+---
 
+# Technology Used
+* Language: Java
+* IDE: Android Studio
+* SDK: Android SDK 24+
+
+---
+
+# Assignments
+
+## HelloWorld  
+My first Android application that displays a Vietnamese greeting message when clicking a button.
+
+---
+
+## ViduLayout1  
+This Android application helps us learn how to use the **ConstraintLayout** in Android development.
+
+---
+
+## ViduLayout2  
+This Android application demonstrates how to use the **LinearLayout** in both **horizontal** and **vertical** orientations.
+
+---
+
+## ViDuListener  
+This Android application demonstrates how to use **Listeners** in two ways (**Named listener** and **Anomymous listener**).  
+
+---
+
+## LoginFigmaScreen 
+This assignment goals is to replicate the original Figma and transform it in the Android Studio
+<a href="https://github.com/QuanggCK" target="_blank">Link Figma</a>
+
+  
