@@ -51,6 +51,8 @@ basic arithmetic operations such as addition, subtraction, multiplication, and d
 
 | Input Number | Result |
 |--------------|--------|
+| ![Input](Images/BasicCalculator/input.png) | ![Result](Images/BasicCalculator/result.png) |
+
 
 
 
