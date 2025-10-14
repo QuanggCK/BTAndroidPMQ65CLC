@@ -50,7 +50,8 @@ It demonstrates how to handle button click events in a simple calculator interfa
 basic arithmetic operations such as addition, subtraction, multiplication, and division.
 
 | Input Number | Result |
-|--------------|--------|
+|---------------|---------|
+| ![Input](Images/input.png) | ![Result](Images/result.png) |
 
 
 
