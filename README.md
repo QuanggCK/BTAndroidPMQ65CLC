@@ -4,9 +4,10 @@ Welcome to my repository about Android Programming. At this repository, you can 
 ---
 
 # 💻 Technology Used
-* Language: Java  
-* IDE: Android Studio  
-* SDK: Android SDK 24+
+* ☕ **Language:** Java  
+* 🏗️ **IDE:** Android Studio  
+* 📱 **SDK:** Android SDK 24+
+
 
 ---
 
