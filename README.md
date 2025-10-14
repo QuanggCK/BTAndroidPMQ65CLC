@@ -99,7 +99,7 @@ Its purpose is to convert USD to VND by handling a **Named Listener**.
 ## BaoBuaKeo
 This Android application helps me practice using **Listeners**, **Random**.  
 Its purpose is to create a simple "Rock–Paper–Scissors" game where the player competes with the computer.
-**WARNING: **You cannot see the computer play what, all you can see is the **"Bạn Thắng"** or **"Máy Thắng"**.
+ **WARNING: **You cannot see the computer play what, all you can see is the **"Bạn Thắng"** or **"Máy Thắng"**.
 
 
 
