@@ -74,6 +74,17 @@ This assignment is made by me while creating something represent myself, I refer
 |--------|
 | ![Result](Images/cardInfo/result.png) |
 
+---
+
+## TracNghiemRandom
+This Android application helps me practice using Random.  
+Its purpose is to generate random quiz questions for users to answer and get familiar with event handling in Android.
+
+| Input  | Result |
+|--------------|--------|
+| ![Input](Images/TracNghiem/input.png) | ![Result](Images/TracNghiem/result.png) |
+
+
 
 
 
