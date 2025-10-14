@@ -65,7 +65,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_replay"
-        app:layout_constraintVertical_bias="0.857">
+        app:layout_constraintVertical_bias="1.0">
 
         <Button
             android:id="@+id/btn_rock2"
@@ -101,8 +101,8 @@
 
     <TextView
         android:id="@+id/tv_result"
-        android:layout_width="178dp"
-        android:layout_height="89dp"
+        android:layout_width="191dp"
+        android:layout_height="100dp"
         android:layout_marginStart="127dp"
         android:layout_marginTop="205dp"
         android:layout_marginEnd="127dp"

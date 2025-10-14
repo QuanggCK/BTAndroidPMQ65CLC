@@ -1,6 +1,7 @@
 package clc65.quanggck.lamthem_baobuakeo;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -10,14 +11,11 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     TextView tv_result;
-    Button btn_rock1, btn_paper1, btn_scissor1, btn_rock2, btn_paper2, btn_sicssor2, btn_replay;
+    Button btn_rock2, btn_paper2, btn_sicssor2, btn_replay;
 
     /// Hàm kiếm Controller
     public void FindCT() {
         tv_result = findViewById(R.id.tv_result);
-        btn_rock1 = findViewById(R.id.btn_rock1);
-        btn_paper1 = findViewById(R.id.btn_paper1);
-        btn_scissor1 = findViewById(R.id.btn_scissor1);
         btn_rock2 = findViewById(R.id.btn_rock2);
         btn_paper2 = findViewById(R.id.btn_paper2);
         btn_sicssor2 = findViewById(R.id.btn_sicssor2);
@@ -26,13 +24,16 @@ public class MainActivity extends AppCompatActivity {
 
     /// Hàm chơi bao búa kéo
     public void Play() {
-        final int[] choicePlayer = {-1}; // -1: Chưa chọn, 0: Búa, 1: Bao, 2: Kéo
-        final int[] choiceBot = {-1};    // Máy random
+        final int[] choicePlayer = {-1}; /// -1: Chưa chọn, 0: Búa, 1: Bao, 2: Kéo
+        final int[] choiceBot = {-1};    /// Máy random
 
-        // Hàm random của máy
+        /// Hàm random của máy
         java.util.Random random = new java.util.Random();
 
-        // Khi người chơi chọn
+        /// Ẩn nút replay khi bắt đầu
+        btn_replay.setVisibility(View.GONE);
+
+        /// Khi người chơi chọn
         btn_rock2.setOnClickListener(v -> {
             choicePlayer[0] = 0; // Búa
             choiceBot[0] = random.nextInt(3);
@@ -51,16 +52,15 @@ public class MainActivity extends AppCompatActivity {
             CheckResult(choiceBot[0], choicePlayer[0]);
         });
 
-        // Nút chơi lại
+        /// Nút chơi lại
         btn_replay.setOnClickListener(v -> {
             choicePlayer[0] = -1;
             choiceBot[0] = -1;
-            tv_result.setText("Chơi lại nào!");
+            btn_replay.setVisibility(View.GONE); /// Ẩn lại nút replay
         });
     }
 
-
-    // --- Hàm kiểm tra kết quả ---
+    /// Hàm kiểm tra
     private void CheckResult(int bot, int player) {
         if (bot == -1 || player == -1) {
             tv_result.setText("Chờ chọn...");
@@ -74,8 +74,10 @@ public class MainActivity extends AppCompatActivity {
         } else {
             tv_result.setText("Máy thắng!");
         }
-    }
 
+        // 👉 Sau khi có kết quả thì hiện nút replay
+        btn_replay.setVisibility(View.VISIBLE);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
