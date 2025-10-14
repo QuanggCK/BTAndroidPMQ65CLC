@@ -36,5 +36,13 @@ This Android application demonstrates how to use **Listeners** in two ways (**Na
 This assignment goals is to replicate the original Figma and transform it in the Android Studio.
 [Link Figma](https://www.figma.com/design/HO7EOnYSwiIhIhcT64MCoN/Untitled?node-id=18-1658&t=zMQZILJOb8NdonEO-1)
 
+---
+
+## About Me
+This assignment goals is to replicate the original Figma and transform it in the Android Studio.
+[Link Figma](https://www.figma.com/design/HO7EOnYSwiIhIhcT64MCoN/Untitled?node-id=18-1658&t=zMQZILJOb8NdonEO-1)
+
+---
+
 
   
