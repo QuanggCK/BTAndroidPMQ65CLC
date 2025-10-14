@@ -44,5 +44,14 @@ This assignment goals is to replicate the original Figma and transform it in the
 
 ---
 
+## THGui_BasicCalculator
+This Android application is to use Listener and make it interactive by responding to user input.  
+It demonstrates how to handle button click events in a simple calculator interface, allowing users to perform 
+basic arithmetic operations such as addition, subtraction, multiplication, and division.
+
+| Input Number | Result |
+|--------------|--------|
+
+
 
   
