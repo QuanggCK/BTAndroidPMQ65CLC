@@ -26,60 +26,56 @@ public class MainActivity extends AppCompatActivity {
 
     /// Hàm chơi bao búa kéo
     public void Play() {
-        final int[] choice1 = {-1}; /// -1 = chưa chọn, 0 = đá, 1 = giấy, 2 = kéo
-        final int[] choice2 = {-1};
+        final int[] choicePlayer = {-1}; // -1: Chưa chọn, 0: Búa, 1: Bao, 2: Kéo
+        final int[] choiceBot = {-1};    // Máy random
 
-        /// Player1
-        btn_rock1.setOnClickListener(v -> {
-            choice1[0] = 0;
-            CheckResult(choice1[0], choice2[0]);
-        });
-        btn_paper1.setOnClickListener(v -> {
-            choice1[0] = 1;
-            CheckResult(choice1[0], choice2[0]);
-        });
-        btn_scissor1.setOnClickListener(v -> {
-            choice1[0] = 2;
-            CheckResult(choice1[0], choice2[0]);
-        });
+        // Hàm random của máy
+        java.util.Random random = new java.util.Random();
 
-        // Người 2 chọn
+        // Khi người chơi chọn
         btn_rock2.setOnClickListener(v -> {
-            choice2[0] = 0;
-            CheckResult(choice1[0], choice2[0]);
+            choicePlayer[0] = 0; // Búa
+            choiceBot[0] = random.nextInt(3);
+            CheckResult(choiceBot[0], choicePlayer[0]);
         });
+
         btn_paper2.setOnClickListener(v -> {
-            choice2[0] = 1;
-            CheckResult(choice1[0], choice2[0]);
+            choicePlayer[0] = 1; // Bao
+            choiceBot[0] = random.nextInt(3);
+            CheckResult(choiceBot[0], choicePlayer[0]);
         });
+
         btn_sicssor2.setOnClickListener(v -> {
-            choice2[0] = 2;
-            CheckResult(choice1[0], choice2[0]);
+            choicePlayer[0] = 2; // Kéo
+            choiceBot[0] = random.nextInt(3);
+            CheckResult(choiceBot[0], choicePlayer[0]);
         });
 
         // Nút chơi lại
         btn_replay.setOnClickListener(v -> {
-            choice1[0] = -1;
-            choice2[0] = -1;
-            tv_result.setText("Hãy chọn!");
+            choicePlayer[0] = -1;
+            choiceBot[0] = -1;
+            tv_result.setText("Chơi lại nào!");
         });
     }
 
+
     // --- Hàm kiểm tra kết quả ---
-    private void CheckResult(int p1, int p2) {
-        if (p1 == -1 || p2 == -1) {
-            tv_result.setText("Chờ cả hai người chọn...");
+    private void CheckResult(int bot, int player) {
+        if (bot == -1 || player == -1) {
+            tv_result.setText("Chờ chọn...");
             return;
         }
 
-        if (p1 == p2) {
+        if (bot == player) {
             tv_result.setText("Hòa!");
-        } else if ((p1 == 0 && p2 == 2) || (p1 == 1 && p2 == 0) || (p1 == 2 && p2 == 1)) {
-            tv_result.setText("Người chơi 1 thắng!");
+        } else if ((player == 0 && bot == 2) || (player == 1 && bot == 0) || (player == 2 && bot == 1)) {
+            tv_result.setText("Bạn thắng!");
         } else {
-            tv_result.setText("Người chơi 2 thắng!");
+            tv_result.setText("Máy thắng!");
         }
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

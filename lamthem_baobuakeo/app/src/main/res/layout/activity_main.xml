@@ -56,11 +56,16 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="122dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="8dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="606dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_replay"
+        app:layout_constraintVertical_bias="0.857">
 
         <Button
             android:id="@+id/btn_rock2"
@@ -96,14 +101,16 @@
 
     <TextView
         android:id="@+id/tv_result"
-        android:layout_width="157dp"
-        android:layout_height="69dp"
+        android:layout_width="178dp"
+        android:layout_height="89dp"
         android:layout_marginStart="127dp"
         android:layout_marginTop="205dp"
         android:layout_marginEnd="127dp"
+        android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:textAlignment="center"
         android:textSize="40sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
