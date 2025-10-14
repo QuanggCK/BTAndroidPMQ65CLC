@@ -9,71 +9,116 @@
     tools:context=".MainActivity" >
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="125dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="horizontal"
+        android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="120dp"
-            android:layout_weight="1"
+            android:id="@+id/btn_rock1"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_marginHorizontal="6dp"
+            android:background="@drawable/circle_bg"
             android:foreground="@drawable/rock_scaled"
-
-            />
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="120dp"
-            android:layout_weight="1"
-            android:foreground="@drawable/paper_scaled" />
+            android:foregroundGravity="center"
+            android:padding="0dp" />
 
         <Button
-            android:id="@+id/button4"
-            android:layout_width="wrap_content"
-            android:layout_height="120dp"
-            android:layout_weight="1"
-            android:foreground="@drawable/scissor_scaled" />
+            android:id="@+id/btn_paper1"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_marginHorizontal="6dp"
+            android:background="@drawable/circle_bg"
+            android:foreground="@drawable/paper_scaled"
+            android:foregroundGravity="center"
+            android:padding="0dp" />
+
+        <Button
+            android:id="@+id/btn_scissor1"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_marginHorizontal="6dp"
+            android:background="@drawable/circle_bg"
+            android:foreground="@drawable/scissor_scaled"
+            android:foregroundGravity="center"
+            android:padding="0dp" />
+
     </LinearLayout>
+
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="125dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:padding="8dp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="606dp">
 
         <Button
-            android:id="@+id/button5"
-            android:layout_width="wrap_content"
-            android:layout_height="120dp"
-            android:layout_weight="1"
+            android:id="@+id/btn_rock2"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_marginHorizontal="6dp"
+            android:background="@drawable/circle_bg"
             android:foreground="@drawable/rock_scaled"
-             />
+            android:foregroundGravity="center"
+            android:padding="0dp" />
 
         <Button
-            android:id="@+id/button6"
-            android:layout_width="wrap_content"
-            android:layout_height="120dp"
-            android:layout_weight="1"
-            android:foreground="@drawable/paper_scaled" />
+            android:id="@+id/btn_paper2"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_marginHorizontal="6dp"
+            android:background="@drawable/circle_bg"
+            android:foreground="@drawable/paper_scaled"
+            android:foregroundGravity="center"
+            android:padding="0dp" />
 
         <Button
-            android:id="@+id/button7"
-            android:layout_width="wrap_content"
-            android:layout_height="120dp"
-            android:layout_weight="1"
-            android:foreground="@drawable/scissor_scaled"  />
+            android:id="@+id/btn_sicssor2"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_marginHorizontal="6dp"
+            android:background="@drawable/circle_bg"
+            android:foreground="@drawable/scissor_scaled"
+            android:foregroundGravity="center"
+            android:padding="0dp" />
+
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="157dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="127dp"
+        android:layout_marginTop="205dp"
+        android:layout_marginEnd="127dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <Button
+        android:id="@+id/btn_replay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="160dp"
+        android:text="Replay ?"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_result" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
