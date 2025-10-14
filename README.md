@@ -87,12 +87,13 @@ Its purpose is to generate random quiz questions for users to answer and get fam
 ---
 
 ## UnitConverter
-This Android application helps me practice using Listener and Toast.
-It's purpose is to convert USD to VND by handling **Named listener**.
+This Android application helps me practice using **Listeners** and **Toast messages**.  
+Its purpose is to convert USD to VND by handling a **Named Listener**.
 
-| Input  | Result |
+| Input | Result |
 |--------------|--------|
 | ![Input](Images/UnitConvert/input.png) | ![Result](Images/UnitConvert/result.png) |
+
 
 
 
