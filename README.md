@@ -101,6 +101,10 @@ This Android application helps me practice using **Listeners**, **Random**.
 Its purpose is to create a simple "Rock–Paper–Scissors" game where the player competes with the computer. <br>
 **WARNING:** You cannot see the computer play what, all you can see is the **"Bạn Thắng"** or **"Máy Thắng"**.
 
+| Input | Result |
+|--------------|--------|
+| ![Input](Images/BaoBuaKeo/interface.png) | ![Result](Images/BaoBuaKeo/result.png) |
+
 
 
 
