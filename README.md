@@ -18,7 +18,7 @@ My first Android application that displays a Vietnamese greeting message when cl
 
 ---
 
-## 🧩 ViduLayout1  
+## [🧩 ViduLayout1](VDLayout1/)  
 This Android application helps us learn how to use the **ConstraintLayout** in Android development.
 
 ---
