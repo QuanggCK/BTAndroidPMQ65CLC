@@ -103,3 +103,11 @@ Its purpose is to create a simple "Rock–Paper–Scissors" game where the playe
 | Input | Result |
 |--------------|--------|
 | ![Input](Images/BaoBuaKeo/interface.png) | ![Result](Images/BaoBuaKeo/result.png) |
+
+---
+
+## RecylerView1_Adapter
+This Android application helps me know how to use **RecylerView** and create a **Adpater** to save it and show
+It's project is to make us to see the Image and the Caption of some well-known places by scrolling down by using RecylerView.
+*P/S:* **Due to some error in my Android Studio, I cannot run the app, sorry for the inconvinience.**
+
