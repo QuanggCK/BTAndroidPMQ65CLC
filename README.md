@@ -106,8 +106,9 @@ Its purpose is to create a simple "Rock–Paper–Scissors" game where the playe
 
 ---
 
-## RecylerView1_Adapter
-This Android application helps me know how to use **RecylerView** and create a **Adpater** to save it and show
-It's project is to make us to see the Image and the Caption of some well-known places by scrolling down by using RecylerView.
-*P/S:* **Due to some error in my Android Studio, I cannot run the app, sorry for the inconvinience.**
+## ♻️ RecyclerView1_Adapter
+This Android application helps me learn how to use the **RecyclerView** component and create a custom **Adapter** to display data efficiently.  
+Its purpose is to show images and captions of some well-known places, allowing users to scroll vertically through the list using **RecyclerView**.  
+*💡 P/S:* Due to some issues with my Android Studio, I couldn’t run the app properly — sorry for the inconvenience.
+
 
