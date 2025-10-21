@@ -41,15 +41,15 @@ public class MainActivity extends AppCompatActivity {
 
         String category;
         if (cbox_asian.isChecked()){
-            if (bmi <=18.5) category = "This Asian is so slim.";
-            else if (bmi< 23) category = "This Asian is fit.";
-            else if (bmi <27.5) category = "This Asian is fat.";
-            else category = "This Asian is fat as fuck.";
+            if (bmi <=18.5) category = "This Asian is so slim. You need to eat more";
+            else if (bmi< 23) category = "This Asian is fit. Good Job!!!";
+            else if (bmi <27.5) category = "This Asian is fat. U should do exercise.";
+            else category = "This Asian is so fat. Need to see a doctor.";
         }else {
-            if (bmi <=18.5) category = "This un_Asian is so slim.";
-            else if (bmi< 25) category = "This un_Asian is fit.";
-            else if (bmi <30) category = "This un_Asian is fat.";
-            else category = "This un_Asian is fat as fuck.";
+            if (bmi <=18.5) category = "This un_Asian is so slim. You need to eat more";
+            else if (bmi< 25) category = "This un_Asian is fit. Good Job!!!";
+            else if (bmi <30) category = "This un_Asian is fat. U should do exercise.";
+            else category = "This un_Asian is fat as fuck. Need to see a doctor.";
         }
 
         tv_result.setText("BMI = " + bmi +" -> " + category);
