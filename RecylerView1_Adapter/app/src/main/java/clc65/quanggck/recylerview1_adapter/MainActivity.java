@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,8 +33,15 @@ public class MainActivity extends AppCompatActivity {
         //(5): Khởi tạo recyclerView
         recyclerViewLandScape = findViewById(R.id.recyclerLand);
         //(6): Tạo adapter gắn với nguồn dữ liệu
-        RecyclerView.LayoutManager layoutLinear = new LinearLayoutManager(this);
-        recyclerViewLandScape.setLayoutManager(layoutLinear);
+            /// Ví dụ về layout để dọc
+            //RecyclerView.LayoutManager layoutLinear = new LinearLayoutManager(this);
+            //recyclerViewLandScape.setLayoutManager(layoutLinear);
+        /// Ví dụ về layout để ngang
+            //RecyclerView.LayoutManager layoutLinearHoriziontal = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+            //recyclerViewLandScape.setLayoutManager(layoutLinearHoriziontal);
+        /// Ví dụ về layout set cột (trong vs này là 2 cột)
+        RecyclerView.LayoutManager layoutGrid =  new GridLayoutManager(this,2);
+        recyclerViewLandScape.setLayoutManager(layoutGrid);
         //(7): Gắn adapter với Recycler
         recyclerViewLandScape.setAdapter(landScapeAdapter);
     }

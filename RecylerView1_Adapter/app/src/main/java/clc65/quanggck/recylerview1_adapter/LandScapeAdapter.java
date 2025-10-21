@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -56,7 +57,7 @@ public class LandScapeAdapter extends RecyclerView.Adapter<LandScapeAdapter.Item
     /// (1) và (2) bên class LandScape
     /// (3): Kế thừa RecyclerView bên lớp Adapter
     //Cái RecyclerView yêu cầu phải có 1 ViewHolder nên phải tạo để nhét vào chỗ <> trên class extends
-    class ItemLandHolder extends RecyclerView.ViewHolder {
+    class ItemLandHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tv_caption;
         ImageView imageViewLandScape;
 
@@ -64,8 +65,25 @@ public class LandScapeAdapter extends RecyclerView.Adapter<LandScapeAdapter.Item
             super(itemView);
             tv_caption = itemView.findViewById(R.id.tv_caption);
             imageViewLandScape = itemView.findViewById(R.id.imageViewLand);
+            itemView.setOnClickListener(this);
         }
 
+        @Override
+        public void onClick(View v) {
+            // Lấy vị trí item được click thông qua phương thức getAdapterPosition()
+            int viTriDuocClick = getAdapterPosition();
+            LandScape phanTuDuocChon = lstData.get(viTriDuocClick);
+            // Lấy dữ liệu tương ứng từ danh sách (theo vị trí)
+            String ten = phanTuDuocChon.getLandCaption();
+            String tenFile = phanTuDuocChon.getLandImageFileName();
+            // Hiển thị thông báo hoặc thực hiện các xử lý khác
+            //Toast.makeText(context, ten, Toast.LENGTH_SHORT).show();
+            String chuoiThongBao = "Bạn vừa click vào " + ten ;
+            Toast.makeText(context, chuoiThongBao, Toast.LENGTH_LONG).show();
+
+
+            // Hiện thông báo, hoặc thực hiện các xử lý khác
+        }
     }
 
 
