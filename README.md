@@ -109,11 +109,13 @@ Its purpose is to create a simple "Rock–Paper–Scissors" game where the playe
 ## [♻️ RecyclerView1_Adapter](RecylerView1_Adapter/)
 This Android application helps me learn how to use the **RecyclerView** component and create a custom **Adapter** to display data efficiently.  
 Its purpose is to show images and captions of some well-known places, allowing users to scroll vertically through the list using **RecyclerView**.  
-It also show us how to practice by testing how **LinearLayoutHoriziontal**, **LinearLayoutVertical(this is the standard when using Linear Layout)** and **GridLayout**
+It also show us how to practice by testing how **LinearLayoutHoriziontal**, **LinearLayoutVertical(this is the standard when using Linear Layout)** and **GridLayout**.  
 *💡 P/S:* Due to some issues with my Android Studio, I couldn’t run the app properly — sorry for the inconvenience.
 
 ---
-## [ lamthem_qldapm]()
-I make this Android app to help me to rememeber some of the formular in the subject **"Project Management"** taught by Ms. Hằng in NTU.
+
+## [QLDAFormula](lamthem_qldapm/)
+I make this Android app to help me to rememeber some of the formular in the subject **"Project Management"** taught by Ms. Hằng in NTU.  
 I make this by using **RecyclerView**, **ViewPaper2**....
+***Note: I still not finish this assignments.***
 
