@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
                     iTransit.putExtra("cjd","QuanggCK");  // cai value la du lieu co dinh
                     iTransit.putExtra("tuoi",1000);
 
-               //3. Goi Activity
+               //3. Kich hoat man hinh 2
                startActivity(iTransit);
 
 
