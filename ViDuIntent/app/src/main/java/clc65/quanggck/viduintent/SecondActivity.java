@@ -3,6 +3,7 @@ package clc65.quanggck.viduintent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,7 +25,9 @@ public class SecondActivity extends AppCompatActivity {
         iNhanDuoc.getIntExtra("tuoi",0);
         //3. Xu ly
             //3.1 Set len TextView
-
+            TextView tv_hienthi = findViewById(R.id.tv_hienthi);
+            tv_hienthi.setText(iNhanDuoc.getStringExtra("ht"));
+            
 
 
 
