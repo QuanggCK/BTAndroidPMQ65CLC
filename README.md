@@ -111,10 +111,9 @@ This Android application helps me learn how to use the **RecyclerView** componen
 Its purpose is to show images and captions of some well-known places, allowing users to scroll vertically through the list using **RecyclerView**.    
 It also show us how to practice by testing how **LinearLayoutHoriziontal**, **LinearLayoutVertical(this is the standard when using Linear Layout)** and **GridLayout**.  
 
-| Input | Result |
-|--------------|--------|
-| ![Input](Images/VdListView_Adapter/input.png) | ![Result](Images/VdListView_Adapter/result.png) |
----
+| Result |
+|--------------|
+| ![Result](Images/VdListView_Adapter/result.png) |
 
 ## [QLDAFormula](lamthem_qldapm/)
 I make this Android app to help me to rememeber some of the formular in the subject **"Project Management"** taught by Ms. Hằng in NTU.  
