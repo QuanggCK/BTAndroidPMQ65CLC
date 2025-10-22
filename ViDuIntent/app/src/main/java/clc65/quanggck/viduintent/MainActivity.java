@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
                     iTransit.putExtra("ht",data);
                     iTransit.putExtra("cjd","QuanggCK");  // cai value la du lieu co dinh
                     iTransit.putExtra("tuoi",1000);
-                    
+
                //3. Goi Activity
                startActivity(iTransit);
 
