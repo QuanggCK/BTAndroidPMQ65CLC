@@ -20,18 +20,15 @@ public class SecondActivity extends AppCompatActivity {
         //1. Nhan ve Intent
         Intent iNhanDuoc = getIntent();
         //2. Boc ra
-        iNhanDuoc.getStringExtra("ht");
-        iNhanDuoc.getStringExtra("cjd");
+        String intNhanDuoc = iNhanDuoc.getStringExtra("ht");
+        String cjdNhanDuoc = iNhanDuoc.getStringExtra("cjd");
         iNhanDuoc.getIntExtra("tuoi",0);
         //3. Xu ly
             //3.1 Set len TextView
             TextView tv_hienthi = findViewById(R.id.tv_hienthi);
-            tv_hienthi.setText(iNhanDuoc.getStringExtra("ht"));
-            
+            tv_hienthi.setText(intNhanDuoc);
 
-
-
-        //Nut Back
+        //4. Tao nut quay lai
         Button btn_return = findViewById(R.id.btn_return);
         btn_return.setOnClickListener(v -> {
             Intent iQuayLai = new Intent(SecondActivity.this, MainActivity.class);

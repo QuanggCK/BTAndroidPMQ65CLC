@@ -36,8 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
                //3. Kich hoat man hinh 2
                startActivity(iTransit);
-
-
            }
         });
     }
