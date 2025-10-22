@@ -23,25 +23,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="125dp"
-        android:layout_marginTop="404dp"
-        android:layout_marginEnd="126dp"
-        android:fontFamily="sans-serif-condensed-light"
-        android:text="List Country"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ListView
         android:id="@+id/lv_deck"
-        android:layout_width="354dp"
-        android:layout_height="219dp"
+        android:layout_width="331dp"
+        android:layout_height="490dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="26dp"
