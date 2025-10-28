@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#FFFFFF">
+
+    <!-- HEADER -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_bg"
+        android:layout_width="0dp"
+        android:layout_height="180dp"
+        android:background="@drawable/header_bg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:src="@mipmap/logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/titleAboutMe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="72dp"
+            android:gravity="center"
+            android:text="ABOUT ME"
+            android:textColor="@android:color/white"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/logo"
+            app:layout_constraintStart_toEndOf="@id/logo"
+            app:layout_constraintTop_toTopOf="@id/logo"
+            app:layout_constraintVertical_bias="0.51" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- NỘI DUNG CHÍNH -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/header_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- ẢNH ĐẠI DIỆN -->
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="16dp"
+                android:src="@mipmap/logo"
+                android:scaleType="centerCrop"
+                android:backgroundTintMode="src_in"
+                android:contentDescription="Avatar"
+                android:backgroundTint="#FFFFFF"
+                android:clipToOutline="true"
+                android:layout_marginBottom="8dp" />
+
+            <!-- TÊN -->
+            <TextView
+                android:id="@+id/Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phạm Minh Quang (65132877)"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="8dp" />
+
+            <!-- NGHỀ NGHIỆP -->
+            <TextView
+                android:id="@+id/tvJob"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="College + Youtuber"
+                android:textSize="16sp"
+                android:textColor="#555555"
+                android:layout_marginTop="4dp" />
+
+            <!-- ĐỊA CHỈ -->
+            <TextView
+                android:id="@+id/tvLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/icon_location"
+                android:drawablePadding="8dp"
+                android:text="Tổ 9, Vĩnh Châu, phường Tây Nha Trang"
+                android:textSize="16sp"
+                android:textColor="#555555"
+                android:layout_marginTop="8dp" />
+
+            <!-- EMAIL -->
+            <TextView
+                android:id="@+id/tvEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@android:drawable/sym_action_email"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:text="zaphkiel1610@gmail.com"
+                android:textSize="16sp"
+                android:textColor="#555555"
+                android:layout_marginTop="6dp" />
+
+            <!-- YOUTUBE -->
+            <TextView
+                android:id="@+id/tvYoutube"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@mipmap/icon_ytb"
+                android:drawablePadding="8dp"
+                android:text="QuanggCK"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#1565C0"
+                android:layout_marginTop="6dp" />
+            <!-- GIỚI THIỆU -->
+            <TextView
+                android:id="@+id/tvAboutMe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="30dp"
+                android:text="Hello there, let me introduce myself first. My name is Quang a.k.a QuanggCK. As I said earlier, I am a Year 3 with a 398 subs from Youtube. I post YuGiOh content. Sometime funny mini-vlog will appear on my shorts. Thanks for reading this."
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:lineSpacingExtra="6dp"
+                android:textAlignment="center" />
+
+            <!-- NÚT QUAY LẠI -->
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="188dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:backgroundTint="#183A6E"
+                android:drawableLeft="@drawable/arrow_right_icon"
+                android:text="Quay lại"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,5 +7,5 @@
     <LinearLayout android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content">
         <Button android:layout_width="100dp" android:layout_margin="10dp" android:id="@+id/btnCN3" android:layout_weight="1" android:layout_height="195dp" android:text="CN3"/>
         <Button android:layout_width="100dp" android:layout_margin="10dp" android:id="@+id/btnCN4" android:layout_weight="1" android:layout_height="195dp" android:text="CN4"/>
-    </LinearLayout>
+    </LinearLayout>+
 </LinearLayout>
