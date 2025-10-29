@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="200dp"
+    android:background="@drawable/corner"
     android:padding="16dp">
 
     <!-- Ảnh to nhất ở trên -->
@@ -12,7 +13,8 @@
         android:id="@+id/image_logo"
         android:layout_width="386dp"
         android:layout_height="92dp"
-        android:scaleType="fitCenter"
+        android:scaleType="fitXY"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -38,12 +40,12 @@
 
     <TextView
         android:id="@+id/Subcontent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="4dp"
         android:gravity="end"
-        android:text="Phụ đề ở dưới Maincontent"
+        android:text="Phụ đề "
         android:textColor="#555555"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@id/Maincontent"
