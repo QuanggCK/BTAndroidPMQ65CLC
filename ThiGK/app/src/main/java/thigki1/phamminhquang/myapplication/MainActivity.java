@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         btnCN3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent iCN3 = new Intent(MainActivity.this, HoatDongTruongActivity.class);
+                Intent iCN3 = new Intent(MainActivity.this, CtdetailActivity.class);
                 startActivity(iCN3);
             }
         });

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:padding="16dp">
+
+    <!-- Ảnh to nhất ở trên -->
+    <ImageView
+        android:id="@+id/image_logo"
+        android:layout_width="386dp"
+        android:layout_height="92dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@mipmap/logo" />
+
+    <!-- Main content ở dưới ảnh -->
+
+    <!-- Subcontent nằm DƯỚI Maincontent, lệch trái -->
+
+    <TextView
+        android:id="@+id/Maincontent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Tiêu đề chính"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_logo" />
+
+    <TextView
+        android:id="@+id/Subcontent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="16dp"
+        android:gravity="end"
+        android:text="Phụ đề ở dưới Maincontent"
+        android:textColor="#555555"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/Maincontent"
+        app:layout_constraintTop_toBottomOf="@id/Maincontent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,9 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OnThiGK">
-        <activity
-            android:name=".CalculateBMiActivity"
-            android:exported="false" />
+
         <activity
             android:name=".BaiTapThemActivity"
             android:exported="false" />

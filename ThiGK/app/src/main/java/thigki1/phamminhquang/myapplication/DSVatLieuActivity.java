@@ -25,7 +25,7 @@ public class DSVatLieuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dsvat_lieu);
 
         // Ánh xạ view
-        lv_dsVatLieu = findViewById(R.id.lv_dsVatLieu);
+        lv_dsVatLieu= findViewById(R.id.lv_dsVatLieu);
         btnBack = findViewById(R.id.btnBack);
 
         // Lấy dữ liệu
@@ -39,8 +39,8 @@ public class DSVatLieuActivity extends AppCompatActivity {
         lv_dsVatLieu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String MonDuocChon = dsAdapter.getItem(position);
-                Toast.makeText(DSVatLieuActivity.this, "Tên loại vật liệu xây dựng: " + MonDuocChon, Toast.LENGTH_LONG).show();
+                String VLDuocChon = dsAdapter.getItem(position);
+                Toast.makeText(DSVatLieuActivity.this, "Vật liệu được chọn: " + VLDuocChon, Toast.LENGTH_LONG).show();
             }
         });
 

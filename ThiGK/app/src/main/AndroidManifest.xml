@@ -12,13 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ThiGK">
         <activity
-            android:name=".BaiTapThemActivity"
+            android:name=".CtdetailActivity"
             android:exported="false" />
         <activity
             android:name=".DSVatLieuActivity"
             android:exported="false" />
         <activity
-            android:name=".DSMonHocActivity"
+            android:name=".VLdetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BaiTapThemActivity"
             android:exported="false" />
         <activity
             android:name=".AboutMeActivity"
