@@ -12,6 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ThiGK">
         <activity
+            android:name=".BaiTapThemActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DSVatLieuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DSMonHocActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AboutMeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DienTichSanActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
