@@ -14,12 +14,13 @@ import com.google.android.material.card.MaterialCardView;
 
 public class MainActivity extends AppCompatActivity {
 
-    MaterialCardView btnCN1, btnCN2, btnCN3, btnAboutMe;
+    MaterialCardView btnCN1, btnCN2, btnCN3, btnAboutMe, btnLamThem;
     void TimDK () {
         btnCN1 = findViewById(R.id.btnCN1);
         btnCN2 = findViewById(R.id.btnCN2);
         btnCN3 = findViewById(R.id.btnCN3);
         btnAboutMe = findViewById(R.id.btnAboutMe);
+        btnLamThem = findViewById(R.id.btnLamThem);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
               Intent iCN3 = new Intent(MainActivity.this, HoatDongTruongActivity.class);
               startActivity(iCN3);
+            }
+        });
+        btnLamThem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iBaiTapThem = new Intent(MainActivity.this, BaiTapThemActivity.class);
+                startActivity(iBaiTapThem);
             }
         });
     }
