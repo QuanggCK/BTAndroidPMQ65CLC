@@ -52,7 +52,7 @@ public class CtdetailActivity extends AppCompatActivity {
                     int position = rv.getChildAdapterPosition(child);
                     CongTrinhModel item = dsHoatDong.get(position);
                     Toast.makeText(CtdetailActivity.this,
-                            "Bạn đã chọn: " + item.getMainContent(),
+                            "Bạn đang chọn: " + item.getMainContent(),
                             Toast.LENGTH_SHORT).show();
                     return true;
                 }
