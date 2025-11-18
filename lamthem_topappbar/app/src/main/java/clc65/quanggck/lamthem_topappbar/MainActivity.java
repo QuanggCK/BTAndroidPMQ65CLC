@@ -17,7 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
         topAppBar = findViewById(R.id.topAppBar);
 
-        setSupportActionBar(topAppBar);
+        topAppBar.inflateMenu(R.menu.top_app_bar);
+
         // Navigation icon
         topAppBar.setNavigationOnClickListener(v ->
                 Toast.makeText(this, "Mở menu điều hướng", Toast.LENGTH_SHORT).show()

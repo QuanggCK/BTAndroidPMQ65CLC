@@ -11,6 +11,6 @@
         android:id="@+id/action_settings"
         android:icon="@mipmap/setting_icon"
         android:title="Cài đặt"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
 
 </menu>
