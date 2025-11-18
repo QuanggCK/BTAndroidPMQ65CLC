@@ -17,11 +17,11 @@ Welcome to my repository about Android Programming. At this repository, you can 
 
 ## [Bottom Navigation Bar](lamthem_footerfragment/)
 ## [TopAppBar](lamthem_topappbar/)
-## TTopAppBarDrawer](lamthem_topappbar_drawer/)
+## [TopAppBarDrawer](lamthem_topappbar_drawer/)  
 Once again, these 3 task is from another source.
-You can find it at
+You can find it at:.  
 [🔗 Bottom Navigation View](https://tiilaz.com/lap-trinh/lap-trinh-android-java/bottom-navigation-view-trong-android-java)
-## Note that i am still not finish that Top Bar + Drawer
+### Note that i am still not finish that Top Bar + Drawer
 
 ---
 
@@ -30,9 +30,9 @@ You can find it at
 ### [FragmentEx_Statical](FragmentEx_Statical/)
 ### [FragmentEx_Dinamically](FragmentEx_Dinamically/)
 The all 3 assigments above are my online class on youtube.
-You can also watch these 3 videos at:
-[🔗 Fragment_Statical](https://www.youtube.com/watch?v=O2KChstycg8)
-[🔗 Fragment_Dynamix](https://www.youtube.com/watch?v=ifZ-skOxQo8)
+You can also watch these 3 videos at:  
+[🔗 Fragment_Statical](https://www.youtube.com/watch?v=O2KChstycg8)  
+[🔗 Fragment_Dynamix](https://www.youtube.com/watch?v=ifZ-skOxQo8)  
 [🔗 Fragment_ChangeDynamix](https://www.youtube.com/watch?v=MFXz8NCwfbA&t=1s)
 
 
