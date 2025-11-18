@@ -43,7 +43,7 @@ And here is the result
 
 | Home Page | Calculate | ComponentList | ConstructionList | AboutMe | LightScreen | DarkScreen |
 |-----------|-----------|---------------|------------------|---------|-------------|------------|
-| ![HomePage](Images/ThiGk/hompage) | ![Calcylate](Images/ThiGk/calculate) | ![ComponentList](Images/ThiGk/lstview) | ![ConstructionList](Images/ThiGk/adapter) | ![AboutMe](Images/ThiGk/aboutme) | ![LightScreen](Images/ThiGk/scr1) | ![DarkScreen](Images/ThiGk/scr2) |
+| ![HomePage](Images/ThiGk/homepage.png) | ![Calculate](Images/ThiGk/calculate.png) | ![ComponentList](Images/ThiGk/lstview.png) | ![ConstructionList](Images/ThiGk/adapter.png) | ![AboutMe](Images/ThiGk/aboutme.png) | ![LightScreen](Images/ThiGk/scr1.png) | ![DarkScreen](Images/ThiGk/scr2.png) |
 
 ---
 
@@ -53,7 +53,7 @@ Basically it's screen has a On/Off button allow you to transform Light -> Dark (
 
 | Ligh Screen | Dark Screen |
 |-------------|-------------|
-| ![LightScreen](Images/ThiGk/scr1) | ![DarkScreen](Images/ThiGk/scr2) |
+| ![LightScreen](Images/ThiGk/scr1.png) | ![DarkScreen](Images/ThiGk/scr2.png) |
 
 ---
 
