@@ -37,8 +37,7 @@ You can also watch these 3 videos at:
 
 
 ## [ThiGK](ThiGK/)
-This is my mid-term test.
-Score: 8/10
+This is my mid-term test. Score: 8/10  
 And here is the result
 
 | Home Page | Calculate | ComponentList | ConstructionList | AboutMe | LightScreen | DarkScreen |
