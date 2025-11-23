@@ -13,10 +13,57 @@ Welcome to my repository about Android Programming. At this repository, you can 
 
 # 📱 Assignments
 
+---
+
+## [Bottom Navigation Bar](lamthem_footerfragment/)
+## [TopAppBar](lamthem_topappbar/)
+## [TopAppBarDrawer](lamthem_topappbar_drawer/)  
+Once again, these 3 task is from another source.
+You can find it at:.  
+[🔗 Bottom Navigation View](https://tiilaz.com/lap-trinh/lap-trinh-android-java/bottom-navigation-view-trong-android-java)
+### Note that i am still not finish that Top Bar + Drawer
+
+---
+
+## [Triple FragmentEx]
+### [FragmentEx_ChangeDymanic](FragmentEx_ChangeDymanic/)
+### [FragmentEx_Statical](FragmentEx_Statical/)
+### [FragmentEx_Dinamically](FragmentEx_Dinamically/)
+The all 3 assigments above are my online class on youtube.
+You can also watch these 3 videos at:  
+[🔗 Fragment_Statical](https://www.youtube.com/watch?v=O2KChstycg8)  
+[🔗 Fragment_Dynamix](https://www.youtube.com/watch?v=ifZ-skOxQo8)  
+[🔗 Fragment_ChangeDynamix](https://www.youtube.com/watch?v=MFXz8NCwfbA&t=1s)
+
+
+## [ThiGK](ThiGK/)
+This is my mid-term test. Score: 8/10  
+And here is the result
+
+| Home Page | Calculate | ComponentList | ConstructionList | AboutMe | LightScreen | DarkScreen |
+|-----------|-----------|---------------|------------------|---------|-------------|------------|
+| ![HomePage](Images/ThiGk/homepage.png) | ![Calculate](Images/ThiGk/calculate.png) | ![ComponentList](Images/ThiGk/lstview.png) | ![ConstructionList](Images/ThiGk/adapter.png) | ![AboutMe](Images/ThiGk/aboutme.png) | ![LightScreen](Images/ThiGk/scr1.png) | ![DarkScreen](Images/ThiGk/scr2.png) |
+
+---
+
+## [Stars](lamthem_light/)
+This assignment helps me to get used to Canvas in Android Studio
+Basically it's screen has a On/Off button allow you to transform Light -> Dark (some lights tiny dots on the screen represents for the Stars)
+
+| Ligh Screen | Dark Screen |
+|-------------|-------------|
+| ![LightScreen](Images/ThiGk/scr1.png) | ![DarkScreen](Images/ThiGk/scr2.png) |
+
+---
+
+## [OnThiGiuaKi](OnThiGK/)
+This is to practice for my mid-term test
+
+---
+
 ## [QLDAFormula](lamthem_qldapm/)
 I make this Android app to help me to rememeber some of the formular in the subject **"Project Management"** taught by Ms. Hằng in NTU.  
-I make this by using **RecyclerView**, **ViewPaper2**....
-***Note: I still not finish this assignments.***
+
 
 ---
 
@@ -63,12 +110,12 @@ Its purpose is to generate random quiz questions for users to answer and get fam
 ---
 
 ## [🃏 CardInfo](lamthem_cardInfo/)  
-(9)## [🃏 CardInfo](lamthem_cardInfo/)  
 This assignment was created to represent myself, inspired by **DbYugiCardSearch** and **Yugipedia**.
 
 | Result |
 |--------|
 | ![Result](Images/cardInfo/result.png) |
+
 ---
 
 ## [🧮 THGui_BasicCalculator](TH_BasicGUI_Calculator/)
