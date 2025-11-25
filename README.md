@@ -15,13 +15,19 @@ Welcome to my repository about Android Programming. At this repository, you can 
 
 ---
 
+## [SqlLite](ViDuSQLlite/)
+In this assignment, we will learn how to create and use a **database** in Android Studio
+With the help of **DB Browser** to see and interact the data inside it.
+
+---
+
 ## [Bottom Navigation Bar](lamthem_footerfragment/)
 ## [TopAppBar](lamthem_topappbar/)
 ## [TopAppBarDrawer](lamthem_topappbar_drawer/)  
 Once again, these 3 task is from another source.
 You can find it at:.  
 [🔗 Bottom Navigation View](https://tiilaz.com/lap-trinh/lap-trinh-android-java/bottom-navigation-view-trong-android-java)
-### Note that i am still not finish that Top Bar + Drawer
+
 
 ---
 
