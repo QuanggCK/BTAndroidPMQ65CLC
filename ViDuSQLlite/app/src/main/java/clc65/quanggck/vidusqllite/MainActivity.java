@@ -114,8 +114,6 @@ public class MainActivity extends AppCompatActivity {
         resultSet.close();
         db.close();
 
-
-
     }
     ArrayList<String> getBookData(){
         db = openOrCreateDatabase("books.db", MODE_PRIVATE, null);

@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_home"
+        android:title="Trang chủ"
+        android:icon="@drawable/home_icon" />
+    <item
+        android:id="@+id/nav_settings"
+        android:title="Cài đặt"
+        android:icon="@drawable/settings_icon" />
+</menu>
