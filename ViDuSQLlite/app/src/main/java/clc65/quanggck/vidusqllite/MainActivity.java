@@ -1,9 +1,14 @@
 package clc65.quanggck.vidusqllite;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.ContentInfo;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,12 +18,48 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     SQLiteDatabase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ArrayList<String> dsTenSach = getBookName();
 
-        getBookData();
+    // Hiện lên ListView
+        ListView listView = findViewById(R.id.lvDsTenSach);
+
+        ArrayAdapter<String> adapterTenSach = new ArrayAdapter<>(
+                MainActivity.this,
+                android.R.layout.simple_list_item_1,
+                dsTenSach
+        );
+
+        listView.setAdapter(adapterTenSach);
+
+
+
+        Button btnThemSach = findViewById(R.id.btnThemSach);
+        btnThemSach.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Take the data to add to database
+                EditText edtTenSach = findViewById(R.id.edtTenSach);
+                EditText edtGiaBan = findViewById(R.id.edtGiaBan);
+                String tenSach = edtTenSach.getText().toString();
+                float giaBan = Float.parseFloat(edtGiaBan.getText().toString());
+
+                // Add to database
+                ContentValues row    = new ContentValues();
+                row.put("BookName", tenSach);
+                row.put("Price", giaBan);
+                db.insert("BOOKS", null, row);
+
+                //Refresh ListView
+                adapterTenSach.notifyDataSetChanged();
+            }
+        });
+
+        //getBookData();
 
         // Create CSDL
         db = openOrCreateDatabase("books.db", MODE_PRIVATE, null);
@@ -73,12 +114,7 @@ public class MainActivity extends AppCompatActivity {
         resultSet.close();
         db.close();
 
-        // Print the data on ListView
-        ListView lvDsTenSach = findViewById(R.id.lvDsTenSach);
-        ArrayAdapter<String> adapterTenSach = new ArrayAdapter<String>(MainActivity.this,
-                                                                android.R.layout.simple_list_item_1,
-                                                                dstenSach);
-        lvDsTenSach.setAdapter(adapterTenSach);
+
 
     }
     ArrayList<String> getBookData(){
