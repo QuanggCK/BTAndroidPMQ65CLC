@@ -6,13 +6,8 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
         getBookData();
 
         // Create CSDL
@@ -140,4 +135,24 @@ public class MainActivity extends AppCompatActivity {
         db.close();
         return dsSach;
     }
+    ArrayList<String> getBookName() {
+        db = openOrCreateDatabase("books.db", MODE_PRIVATE, null);
+        String sqlSelectAll = "SELECT * FROM BOOKS";
+        Cursor resultSet = db.rawQuery(sqlSelectAll, null);
+        ArrayList<String> dsTenSach = new ArrayList<String>();
+        resultSet.moveToFirst();
+
+        while(true) {
+            // Lấy dữ liệu của dòng/bản ghi hiện tại, trỏ bởi resultSet
+            int maSach = resultSet.getInt(0);
+            String tenSach = resultSet.getString(1);
+            dsTenSach.add(tenSach);
+
+            if(resultSet.moveToNext() == false) break;
+        }
+
+        db.close();
+        return dsTenSach;
+    }
+
 }
