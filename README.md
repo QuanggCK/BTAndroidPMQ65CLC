@@ -15,8 +15,20 @@ Welcome to my repository about Android Programming. At this repository, you can 
 
 ---
 
+## [lamthem_Super Annoying DateOfaBirth](SuperAnnoyingDOB/)
+This is for fun to choose your correct date and your year in the most annyoing way.  
+This is the first time I use **SeekBar** and **NumberPicker**.  
+And here is the result.  
+
+| Result |
+|--------|
+| ![Result](Images/DOB/result.png) |
+
+
+---
+
 ## [SqlLite](ViDuSQLlite/)
-In this assignment, we will learn how to create and use a **database** in Android Studio
+In this assignment, we will learn how to create and use a **database** in Android Studio.  
 With the help of **DB Browser** to see and interact the data inside it.
 
 ---
