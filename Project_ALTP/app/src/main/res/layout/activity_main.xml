@@ -65,13 +65,33 @@
         tools:layout_editor_absoluteY="569dp" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button4"
+        android:id="@+id/btn_setting"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:background="@drawable/button"
-        android:text="Button"
-        corners android:radius="16dp"
+        android:background="@drawable/mini_button"
+        android:foreground="@mipmap/setting"
+        android:radius="50dp"
         tools:layout_editor_absoluteX="102dp"
+        tools:layout_editor_absoluteY="636dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_guide"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/mini_button"
+        android:foreground="@mipmap/info"
+        android:radius="50dp"
+        tools:layout_editor_absoluteX="180dp"
+        tools:layout_editor_absoluteY="636dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_exit"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/mini_button"
+        android:foreground="@mipmap/exit"
+        android:radius="50dp"
+        tools:layout_editor_absoluteX="259dp"
         tools:layout_editor_absoluteY="636dp" />
 
 
