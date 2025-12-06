@@ -5,92 +5,74 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_bg"
+    android:background="@mipmap/img"
     tools:context=".MainActivity">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="330dp"
-        android:layout_height="274dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="41dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/logo_altp" />
 
     <TextView
         android:id="@+id/tv_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="228dp"
+        android:layout_width="271dp"
+        android:layout_height="48dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="AI LÀ TRIỆU PHÚ"
         android:textColor="@color/white"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteY="88dp" />
 
-    <Button
-        android:id="@+id/btn_play"
-        android:layout_width="248dp"
-        android:layout_height="74dp"
-        android:layout_marginStart="81dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="82dp"
-        android:fontFamily="@font/inter_semibold"
-        android:text="Chơi"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="270dp"
+        android:layout_height="240dp"
+        app:srcCompat="@drawable/box_bg"
+        tools:layout_editor_absoluteX="70dp"
+        tools:layout_editor_absoluteY="420dp" />
 
-    <Button
-        android:id="@+id/btn_addQuestion"
-        android:layout_width="248dp"
-        android:layout_height="74dp"
-        android:layout_marginStart="81dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="82dp"
-        android:text="Thêm Câu Hỏi"
-        android:fontFamily="@font/inter_semibold"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_play" />
-
-    <Button
-        android:id="@+id/btn_Info"
-        android:layout_width="248dp"
-        android:layout_height="74dp"
-        android:layout_marginStart="82dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="82dp"
-        android:text="Cá Nhân"
-        android:fontFamily="@font/inter_semibold"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_addQuestion" />
-
-    <Button
-        android:id="@+id/btn_exit"
-        android:layout_width="133dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="139dp"
-        android:layout_marginEnd="139dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/red"
-        android:fontFamily="@font/inter_semibold"
-        android:text="THOÁT"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_newgame"
+        android:layout_width="170dp"
+        android:layout_height="55dp"
+        android:background="@drawable/button"
+        android:text="GAME MỚI"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:layout_editor_absoluteX="120dp"
+        tools:layout_editor_absoluteY="435dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_addquestion"
+        android:layout_width="170dp"
+        android:layout_height="55dp"
+        android:background="@drawable/button"
+        android:text="THÊM CÂU HỎI"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="120dp"
+        tools:layout_editor_absoluteY="501dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_info"
+        android:layout_width="170dp"
+        android:layout_height="55dp"
+        android:background="@drawable/button"
+        android:text="THÔNG TIN"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="120dp"
+        tools:layout_editor_absoluteY="569dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button"
+        android:text="Button"
+        corners android:radius="16dp"
+        tools:layout_editor_absoluteX="102dp"
+        tools:layout_editor_absoluteY="636dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
