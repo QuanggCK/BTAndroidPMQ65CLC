@@ -11,13 +11,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn_addquestion, btn_exit, btn_infogame;
+    Button btn_addquestion, btn_exit, btn_infogame, btn_settings;
+
 
     // Hàm tìm các controller
     private void TimCT() {
         btn_addquestion = findViewById(R.id.btn_addquestion);
         btn_exit = findViewById(R.id.btn_exit);
         btn_infogame = findViewById(R.id.btn_infogame);
+        btn_settings = findViewById(R.id.btn_settings);
     }
 
     // Intent thêm câu hỏi
@@ -55,16 +57,28 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // Intent settings
+    private void Settings() {
+        btn_settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(settingsIntent);
+            }
+        });
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+        MusicManager.play(this);
         TimCT();
         ThemCauHoi();
         InfoGame();
-
-
+        Settings();
+        btn_exit.setOnClickListener(v -> Exit(v));
     }
 }
