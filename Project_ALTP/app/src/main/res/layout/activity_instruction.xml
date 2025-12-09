@@ -10,8 +10,12 @@
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_width="419dp"
+        android:layout_height="1011dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_return"
@@ -47,46 +51,54 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
         android:fontFamily="@font/inter_black"
         android:text="HƯỚNG DẪN CHƠI"
         android:textColor="@color/white"
         android:textSize="25sp"
-        tools:layout_editor_absoluteX="90dp"
-        tools:layout_editor_absoluteY="237dp" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintLeft_toLeftOf="@id/main"
+        app:layout_constraintRight_toRightOf="@id/main"
+        tools:layout_editor_absoluteX="90dp" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="323dp"
-        android:layout_height="536dp"
+        android:layout_width="319dp"
+        android:layout_height="502dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
         app:srcCompat="@mipmap/bonus"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="274dp" />
+        app:layout_constraintLeft_toLeftOf="@id/main"
+        app:layout_constraintRight_toRightOf="@id/main"
+        tools:layout_editor_absoluteX="46dp" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="316dp"
         android:layout_height="47dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/inter_black"
         android:gravity="center"
         android:text="Trả lời 15 câu hỏi để đạt được số tiền lên đến 1 triệu đồng"
         android:textColor="@color/white"
         android:textSize="17sp"
-        tools:layout_editor_absoluteX="49dp"
-        tools:layout_editor_absoluteY="826dp" />
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintLeft_toLeftOf="@id/main"
+        app:layout_constraintRight_toRightOf="@id/main"
+        tools:layout_editor_absoluteX="52dp" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="316dp"
         android:layout_height="47dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/inter_black"
         android:gravity="center"
-        android:text="Còn chần chờ gì nữa mà không chơi "
+        android:text="Còn chần chờ gì nữa mà không chơi"
         android:textColor="@color/white"
         android:textSize="17sp"
-        tools:layout_editor_absoluteX="49dp"
-        tools:layout_editor_absoluteY="892dp" />
-
-
+        app:layout_constraintLeft_toLeftOf="@id/main"
+        app:layout_constraintRight_toRightOf="@id/main"
+        app:layout_constraintTop_toBottomOf="@id/textView8" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

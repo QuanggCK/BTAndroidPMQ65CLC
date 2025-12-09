@@ -70,9 +70,7 @@
             android:layout_marginEnd="21dp"
             android:fontFamily="@font/inter_black"
             android:gravity="center"
-            android:text="Có 2 sự trợ giúp:\n
-50/50: Loại bỏ 2 câu trả lời sai.\n
-Gọi điện: Gọi điện cho người thân để hỏi."
+            android:text="Có 2 sự trợ giúp:\n 50/50: Loại bỏ 2 câu trả lời sai.\n Gọi điện: Gọi điện cho người thân để hỏi."
             android:textColor="@color/white"
             android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -125,6 +123,5 @@ Gọi điện: Gọi điện cho người thân để hỏi."
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
+</androidx.constraintlayout.widget.ConstraintLayout>

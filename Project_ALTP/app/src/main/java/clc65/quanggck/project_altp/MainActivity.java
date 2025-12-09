@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn_addquestion, btn_exit, btn_infogame, btn_settings;
+    Button btn_addquestion, btn_exit, btn_infogame, btn_settings, btn_guide;
 
 
     // Hàm tìm các controller
@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
         btn_exit = findViewById(R.id.btn_exit);
         btn_infogame = findViewById(R.id.btn_infogame);
         btn_settings = findViewById(R.id.btn_settings);
+        btn_guide = findViewById(R.id.btn_guide);
+
     }
 
     // Intent thêm câu hỏi
@@ -68,6 +70,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // Intent guide
+    private void Guide() {
+        btn_guide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent guideIntent = new Intent(MainActivity.this, InstructionActivity.class);
+                startActivity(guideIntent);
+            }
+        });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         ThemCauHoi();
         InfoGame();
         Settings();
+        Guide();
         btn_exit.setOnClickListener(v -> Exit(v));
     }
 }

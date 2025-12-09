@@ -11,8 +11,6 @@ public class InstructionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instruction);
 
-        ViewPager2 viewPager = findViewById(R.id.viewPager);
-        InstructionPaperAdapter adapter = new InstructionPaperAdapter(this);
-        viewPager.setAdapter(adapter);
+
     }
 }
