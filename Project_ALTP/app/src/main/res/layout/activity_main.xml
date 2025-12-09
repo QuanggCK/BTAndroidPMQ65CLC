@@ -67,7 +67,7 @@
 
         <!-- BUTTON THÔNG TIN -->
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_info"
+            android:id="@+id/btn_infogame"
             android:layout_width="220dp"
             android:layout_height="55dp"
             android:layout_marginTop="20dp"

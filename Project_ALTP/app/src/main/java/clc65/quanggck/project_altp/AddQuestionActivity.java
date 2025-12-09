@@ -10,11 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 public class AddQuestionActivity extends AppCompatActivity {
 
     Button btn_return;
-
+    // Hàm tìm các controller
     public void TimCT(){
         btn_return = findViewById(R.id.btn_return);
     }
 
+    // Hàm quay về
     public void Return(View v){
         finish();
     }
