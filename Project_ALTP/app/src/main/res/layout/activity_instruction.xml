@@ -5,6 +5,88 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_bg"
     tools:context=".InstructionActivity">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_return"
+        android:layout_width="57dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/return_btn"
+        android:drawableStart="@android:drawable/ic_menu_revert"
+        android:gravity="center"
+        android:clickable="true"
+        android:focusable="true"
+        android:translationZ="10dp"
+        android:padding="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="121dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/logo_altp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_black"
+        android:text="HƯỚNG DẪN CHƠI"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        tools:layout_editor_absoluteX="90dp"
+        tools:layout_editor_absoluteY="237dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="323dp"
+        android:layout_height="536dp"
+        app:srcCompat="@mipmap/bonus"
+        tools:layout_editor_absoluteX="46dp"
+        tools:layout_editor_absoluteY="274dp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="316dp"
+        android:layout_height="47dp"
+        android:fontFamily="@font/inter_black"
+        android:gravity="center"
+        android:text="Trả lời 15 câu hỏi để đạt được số tiền lên đến 1 triệu đồng"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        tools:layout_editor_absoluteX="49dp"
+        tools:layout_editor_absoluteY="826dp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="316dp"
+        android:layout_height="47dp"
+        android:fontFamily="@font/inter_black"
+        android:gravity="center"
+        android:text="Còn chần chờ gì nữa mà không chơi "
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        tools:layout_editor_absoluteX="49dp"
+        tools:layout_editor_absoluteY="892dp" />
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
