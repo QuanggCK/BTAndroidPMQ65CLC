@@ -111,6 +111,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_exit"
+        android:onClick="Exit"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:background="@drawable/mini_button"
