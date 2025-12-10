@@ -15,7 +15,17 @@ Welcome to my repository about Android Programming. At this repository, you can 
 
 ---
 
-## [lamthem_Super Annoying DateOfaBirth](SuperAnnoyingDOB/)
+## [Project_AiLaTrieuPhu](Project_ALTP/)
+This is my project for the final test. Basically it's a cheap copy of the gameshow **Who wants to be a Millinaire** a.k.a **Ai Là Triệu Phú** is the Viet Nam version.  
+You can see the sample list Figma I created to see what inside. <a href="https://www.figma.com/design/BQgoB0tRjzewiPVaS6k1E4/AiLaTrieuPhu?node-id=0-1&t=mexCt3xIhR61Z69M-1" target="_blank">
+🔗 Link Figma
+</a>.  
+I had finished the HomePage, AddQuestion, Settings, PLayInstruction. I will update later... 
+
+
+---
+
+## [lamthem_Super Annoying DateOfBirth](SuperAnnoyingDOB/)
 This is for fun to choose your correct date and your year in the most annyoing way.  
 This is the first time I use **SeekBar** and **NumberPicker**.  
 And here is the result.  
