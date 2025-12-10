@@ -40,5 +40,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    implementation("com.tbuonomo:dotsindicator:4.3")
+    implementation(libs.dotsindicator)
+
+
 }

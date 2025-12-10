@@ -9,8 +9,11 @@ public class InstructionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_instruction);
+        setContentView(R.layout.activity_swipe_instruction);
 
+        ViewPager2 viewPager = findViewById(R.id.viewPagerInstruction);
+        InstructionPagerAdapter adapter = new InstructionPagerAdapter(this);
+        viewPager.setAdapter(adapter);
 
     }
 }
