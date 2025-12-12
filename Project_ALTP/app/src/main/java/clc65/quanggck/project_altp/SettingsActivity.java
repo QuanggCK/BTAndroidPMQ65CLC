@@ -8,9 +8,6 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -18,7 +15,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     // Hàm tìm các controller
     public void TimCT(){
-        btn_return = findViewById(R.id.btn_return);
+        btn_return = findViewById(R.id.btn_setting);
         btn_mute = findViewById(R.id.btn_mute);
         btn_guide = findViewById(R.id.btn_guide);
 

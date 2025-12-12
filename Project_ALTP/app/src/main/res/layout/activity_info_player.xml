@@ -9,19 +9,20 @@
     tools:context=".InfoPlayerActivity">
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_return"
+        android:id="@+id/btn_setting"
         android:layout_width="57dp"
         android:layout_height="41dp"
-        android:layout_gravity="start"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/return_btn"
         android:drawableStart="@android:drawable/ic_menu_revert"
         android:gravity="start"
         android:padding="12dp"
-        android:translationZ="10dp"
+        android:elevation="20dp"
+        android:translationZ="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <EditText
         android:id="@+id/edt_name"

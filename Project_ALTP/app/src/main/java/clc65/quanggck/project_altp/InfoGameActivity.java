@@ -4,16 +4,12 @@ import android.content.Intent;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
 import android.os.Bundle;
-import android.text.TextPaint;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class InfoGameActivity extends AppCompatActivity {
 
@@ -22,7 +18,7 @@ public class InfoGameActivity extends AppCompatActivity {
 
     // Hàm tìm các controller
     public void TimCT(){
-        btn_return = findViewById(R.id.btn_return);
+        btn_return = findViewById(R.id.btn_setting);
         tv_support = findViewById(R.id.tv_support);
 
     }

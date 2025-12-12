@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn_addquestion, btn_exit, btn_infogame, btn_settings, btn_infoPlayer;
+    Button btn_addquestion, btn_exit, btn_infogame, btn_settings, btn_infoPlayer, btn_newgame;
 
 
     // Hàm tìm các controller
@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         btn_infogame = findViewById(R.id.btn_infogame);
         btn_settings = findViewById(R.id.btn_settings);
         btn_infoPlayer = findViewById(R.id.btn_infoPlayer);
+        btn_newgame = findViewById(R.id.btn_newgame);
 
     }
 
@@ -72,15 +73,20 @@ public class MainActivity extends AppCompatActivity {
 
     // Intent info player
     private void InfoPlayer() {
-            btn_infoPlayer.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent settingsIntent = new Intent(MainActivity.this, InfoPlayerActivity.class);
-                    startActivity(settingsIntent);
-                }
-            });
-        }
+        btn_infoPlayer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent settingsIntent = new Intent(MainActivity.this, InfoPlayerActivity.class);
+                startActivity(settingsIntent);
+            }
+        });
+    }
 
+    // Intent chơi
+    public void Play(View v) {
+        Intent playIntent = new Intent(MainActivity.this, PLayActivity.class);
+        startActivity(playIntent);
+    }
 
 
     @Override
@@ -88,13 +94,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        
+
         MusicManager.play(this);
         TimCT();
         ThemCauHoi();
         InfoGame();
         Settings();
         InfoPlayer();
+        btn_newgame.setOnClickListener(v -> Play(v));
 
         btn_exit.setOnClickListener(v -> Exit(v));
     }

@@ -10,7 +10,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_return"
+        android:id="@+id/btn_setting"
         android:layout_width="57dp"
         android:layout_height="40dp"
         android:layout_marginStart="32dp"
@@ -62,6 +62,7 @@
         android:id="@+id/btn_mute"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_marginStart="106dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="76dp"
         android:background="@drawable/icon_settings"
@@ -71,6 +72,7 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/button4"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_guide" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -78,13 +80,14 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginTop="60dp"
+        android:layout_marginEnd="109dp"
         android:background="@drawable/icon_settings"
         android:fontFamily="@font/inter_black"
         android:padding="15dp"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@+id/btn_guide"
-        tools:layout_editor_absoluteX="242dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_guide" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

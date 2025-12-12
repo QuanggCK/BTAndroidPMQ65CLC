@@ -6,9 +6,6 @@ import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class InfoPlayerActivity extends AppCompatActivity {
 
@@ -16,7 +13,7 @@ public class InfoPlayerActivity extends AppCompatActivity {
 
     // Hàm tìm các controller
     public void TimCT(){
-        btn_return = findViewById(R.id.btn_return);
+        btn_return = findViewById(R.id.btn_setting);
 
     }
 

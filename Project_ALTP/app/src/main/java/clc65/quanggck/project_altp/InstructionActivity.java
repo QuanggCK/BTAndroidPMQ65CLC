@@ -15,7 +15,7 @@ public class InstructionActivity extends AppCompatActivity {
     WormDotsIndicator dotsIndicator;
 
     public void TimCT() {
-        btn_return = findViewById(R.id.btn_return);
+        btn_return = findViewById(R.id.btn_setting);
         dotsIndicator = findViewById(R.id.dotsIndicator);
     }
 

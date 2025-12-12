@@ -5,50 +5,36 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_bg"
-    tools:context=".AddQuestionActivity">
-
+    android:background="@mipmap/img"
+    tools:context=".PLayActivity">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_setting"
         android:layout_width="57dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/return_btn"
-        android:drawableStart="@android:drawable/ic_menu_revert"
-        android:gravity="center"
-        android:clickable="true"
-        android:focusable="true"
-        android:translationZ="10dp"
+        android:layout_height="41dp"
+        android:layout_gravity="start"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="26dp"
+        android:background="@drawable/icon_settings"
+        android:drawableStart="@mipmap/setting"
+        android:gravity="start"
         android:padding="12dp"
+        android:translationZ="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="121dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/logo_altp" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="363dp"
         android:layout_height="130dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/tv_currentbonus"
         app:srcCompat="@drawable/question" />
 
     <TextView
@@ -58,53 +44,55 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/inter_black"
-        android:text="Câu hỏi muốn thêm:"
+        android:text="Câu hỏi:"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
-    <EditText
+    <TextView
         android:id="@+id/edt_namequestion"
         android:layout_width="335dp"
         android:layout_height="81dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
-        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
         app:layout_constraintStart_toStartOf="@+id/imageView3" />
 
-    <EditText
+    <TextView
         android:id="@+id/tv_a"
         android:layout_width="363dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/mini_button"
         android:ems="10"
         android:fontFamily="@font/inter_black"
-        android:inputType="text"
+        android:gravity="start|center_vertical"
         android:paddingStart="15dp"
-        android:text="Đúng:"
+        android:text="A:"
         android:textColor="@color/white"
+        android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
-    <EditText
+    <TextView
         android:id="@+id/tv_d"
         android:layout_width="363dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/mini_button"
         android:ems="10"
         android:fontFamily="@font/inter_black"
-        android:inputType="text"
+        android:gravity="start|center_vertical"
         android:paddingStart="15dp"
-        android:text="Sai:"
+        android:text="D:"
         android:textColor="@color/white"
+        android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_c" />
@@ -114,15 +102,16 @@
         android:layout_width="363dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/mini_button"
         android:ems="10"
         android:fontFamily="@font/inter_black"
-        android:inputType="text"
+        android:gravity="start|center_vertical"
         android:paddingStart="15dp"
-        android:text="Sai:"
+        android:text="C:"
         android:textColor="@color/white"
+        android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_b" />
@@ -137,30 +126,45 @@
         android:background="@drawable/mini_button"
         android:ems="10"
         android:fontFamily="@font/inter_black"
-        android:inputType="text"
+        android:textSize="16dp"
+        android:gravity="start|center_vertical"
         android:paddingStart="15dp"
-        android:text="Sai:"
+        android:text="B:"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_a" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_confirm"
-        android:layout_width="140dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="135dp"
-        android:layout_marginEnd="136dp"
-        android:layout_marginBottom="16dp"
+    <TextView
+        android:id="@+id/tv_currentbonus"
+        android:layout_width="132dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="200dp"
         android:background="@drawable/mini_button"
         android:fontFamily="@font/inter_black"
-        android:text="Xác nhận"
+        android:gravity="center|top"
+        android:paddingTop="7dp"
+        android:text="dld"
         android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_currentquestion" />
 
+    <TextView
+        android:id="@+id/tv_currentquestion"
+        android:layout_width="132dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/mini_button"
+        android:fontFamily="@font/inter_black"
+        android:gravity="center"
+        android:text="Câu"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/btn_setting"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
