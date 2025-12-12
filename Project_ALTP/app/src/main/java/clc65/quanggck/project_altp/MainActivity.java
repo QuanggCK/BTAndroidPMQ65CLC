@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn_addquestion, btn_exit, btn_infogame, btn_settings, btn_guide;
+    Button btn_addquestion, btn_exit, btn_infogame, btn_settings, btn_infoPlayer;
 
 
     // Hàm tìm các controller
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         btn_exit = findViewById(R.id.btn_exit);
         btn_infogame = findViewById(R.id.btn_infogame);
         btn_settings = findViewById(R.id.btn_settings);
-        btn_guide = findViewById(R.id.btn_guide);
+        btn_infoPlayer = findViewById(R.id.btn_infoPlayer);
 
     }
 
@@ -70,28 +70,32 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Intent guide
-    private void Guide() {
-        btn_guide.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent guideIntent = new Intent(MainActivity.this, InstructionActivity.class);
-                startActivity(guideIntent);
-            }
-        });
-    }
+    // Intent info player
+    private void InfoPlayer() {
+            btn_infoPlayer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent settingsIntent = new Intent(MainActivity.this, InfoPlayerActivity.class);
+                    startActivity(settingsIntent);
+                }
+            });
+        }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+        
         MusicManager.play(this);
         TimCT();
         ThemCauHoi();
         InfoGame();
         Settings();
-        Guide();
+        InfoPlayer();
+
         btn_exit.setOnClickListener(v -> Exit(v));
     }
 }

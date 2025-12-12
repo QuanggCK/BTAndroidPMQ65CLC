@@ -92,13 +92,13 @@
         android:background="@drawable/mini_button"
         android:foreground="@mipmap/setting"
         app:layout_constraintTop_toBottomOf="@+id/layout_mainbox"
-        app:layout_constraintEnd_toStartOf="@+id/btn_guide"
+        app:layout_constraintEnd_toStartOf="@+id/btn_infoPlayer"
         android:layout_marginTop="-28dp"
         android:layout_marginEnd="35dp" />
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_guide"
+        android:id="@+id/btn_infoPlayer"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:background="@drawable/mini_button"
@@ -117,7 +117,7 @@
         android:background="@drawable/mini_button"
         android:foreground="@mipmap/exit"
         app:layout_constraintTop_toBottomOf="@+id/layout_mainbox"
-        app:layout_constraintStart_toEndOf="@+id/btn_guide"
+        app:layout_constraintStart_toEndOf="@+id/btn_infoPlayer"
         android:layout_marginTop="-28dp"
         android:layout_marginStart="35dp" />
 
