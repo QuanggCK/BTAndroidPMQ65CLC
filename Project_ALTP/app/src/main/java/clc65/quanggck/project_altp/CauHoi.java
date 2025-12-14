@@ -4,11 +4,11 @@ import java.util.List;
 
 public class CauHoi {
 
-    private int id;                  // ID câu hỏi
-    private String noidung;           // Nội dung câu hỏi
-    private List<DapAn> dapAnList;    // Danh sách đáp án
-    private DoKho doKho;              // Độ khó (EZ, MEDIUM, HARD)
-    private int soCau;                // Số thứ tự câu (1 → 15)
+    private int id;
+    private String noidung;
+    private List<DapAn> dapAnList;
+    private DoKho doKho;
+    private int soCau;
 
     public CauHoi() {
     }

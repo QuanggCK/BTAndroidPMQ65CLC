@@ -15,10 +15,16 @@ public class PLayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_play);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
     }
+    private DoKho layDoKhoTheoSoCau(int soCau) {
+        if (soCau >= 1 && soCau <= 5) {
+            return DoKho.EZ;
+        } else if (soCau >= 6 && soCau <= 10) {
+            return DoKho.MEDIUM;
+        } else {
+            return DoKho.HARD;
+        }
+    }
+
 }
