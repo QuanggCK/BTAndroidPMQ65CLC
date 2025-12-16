@@ -11,6 +11,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import clc65.quanggck.project_altp.dao.QuestionDAO;
+import clc65.quanggck.project_altp.model.Answer;
+import clc65.quanggck.project_altp.model.Question;
+
 public class PLayActivity extends AppCompatActivity {
 
     // ===== Controller =====
@@ -43,7 +47,7 @@ public class PLayActivity extends AppCompatActivity {
         currentIndex = 0;
     }
 
-    // ===== B3: Hiển thị câu hỏi =====
+
     private void HienThi() {
 
         if (questionList == null || questionList.isEmpty()) return;

@@ -1,4 +1,4 @@
-package clc65.quanggck.project_altp;
+package clc65.quanggck.project_altp.model;
 
 public class Answer {
     public String text;
