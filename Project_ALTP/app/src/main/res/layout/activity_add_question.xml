@@ -28,13 +28,12 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
+        android:layout_width="134dp"
+        android:layout_height="141dp"
         android:layout_marginStart="120dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="121dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/logo_altp" />
@@ -44,9 +43,10 @@
         android:layout_width="363dp"
         android:layout_height="130dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:srcCompat="@drawable/question" />
@@ -90,6 +90,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <EditText
+        android:id="@+id/tv_diff"
+        android:layout_width="212dp"
+        android:layout_height="48dp"
+        android:background="@drawable/mini_button"
+        android:ems="10"
+        android:fontFamily="@font/inter_black"
+        android:inputType="text"
+        android:paddingStart="15dp"
+        android:text="Độ khó:"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
         android:id="@+id/tv_d"
@@ -151,7 +167,7 @@
         android:layout_height="55dp"
         android:layout_marginStart="135dp"
         android:layout_marginEnd="136dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="4dp"
         android:background="@drawable/mini_button"
         android:fontFamily="@font/inter_black"
         android:text="Xác nhận"
