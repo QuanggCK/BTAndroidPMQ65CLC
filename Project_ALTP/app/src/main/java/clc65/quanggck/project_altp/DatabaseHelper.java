@@ -31,6 +31,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "difficulty_id INTEGER," +
                 "FOREIGN KEY(difficulty_id) REFERENCES Difficulty(id))");
 
+        db.execSQL("CREATE TABLE HighScore (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "player_name TEXT NOT NULL," +
+                "score INTEGER NOT NULL," +
+                "difficulty_id INTEGER," +
+                "play_time DATETIME DEFAULT CURRENT_TIMESTAMP," +
+                "FOREIGN KEY(difficulty_id) REFERENCES Difficulty(id))");
+
+
         // dữ liệu mẫu
         db.execSQL("INSERT INTO Difficulty(name) VALUES ('Dễ'),('Trung bình'),('Khó')");
 
