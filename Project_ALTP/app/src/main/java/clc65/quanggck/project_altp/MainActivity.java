@@ -13,7 +13,6 @@ public class MainActivity extends AppCompatActivity {
 
     Button btn_addquestion, btn_exit, btn_infogame, btn_settings, btn_infoPlayer, btn_newgame;
 
-
     // Hàm tìm các controller
     private void TimCT() {
         btn_addquestion = findViewById(R.id.btn_addquestion);
@@ -22,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
         btn_settings = findViewById(R.id.btn_settings);
         btn_infoPlayer = findViewById(R.id.btn_infoPlayer);
         btn_newgame = findViewById(R.id.btn_newgame);
-
     }
 
     // Intent thêm câu hỏi
@@ -30,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
         btn_addquestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent addQuestionIntent = new Intent(MainActivity.this, AddQuestionActivity.class);
+                Intent addQuestionIntent =
+                        new Intent(MainActivity.this, AddQuestionActivity.class);
                 startActivity(addQuestionIntent);
             }
         });
@@ -41,9 +40,12 @@ public class MainActivity extends AppCompatActivity {
         new AlertDialog.Builder(MainActivity.this)
                 .setTitle("Thoát game?")
                 .setMessage("Bạn có chắc muốn thoát không?")
-                .setPositiveButton("Có", (dialog, which) -> {
-                    finishAffinity();
-                    System.exit(0);
+                .setPositiveButton("Có", new android.content.DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(android.content.DialogInterface dialog, int which) {
+                        finishAffinity();
+                        System.exit(0);
+                    }
                 })
                 .setNegativeButton("Không", null)
                 .show();
@@ -54,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
         btn_infogame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent infoGameIntent = new Intent(MainActivity.this, InfoGameActivity.class);
+                Intent infoGameIntent =
+                        new Intent(MainActivity.this, InfoGameActivity.class);
                 startActivity(infoGameIntent);
             }
         });
@@ -65,7 +68,8 @@ public class MainActivity extends AppCompatActivity {
         btn_settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
+                Intent settingsIntent =
+                        new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(settingsIntent);
             }
         });
@@ -76,8 +80,9 @@ public class MainActivity extends AppCompatActivity {
         btn_infoPlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent settingsIntent = new Intent(MainActivity.this, InfoPlayerActivity.class);
-                startActivity(settingsIntent);
+                Intent infoPlayerIntent =
+                        new Intent(MainActivity.this, InfoPlayerActivity.class);
+                startActivity(infoPlayerIntent);
             }
         });
     }
@@ -87,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
         Intent playIntent = new Intent(MainActivity.this, PLayActivity.class);
         startActivity(playIntent);
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,8 +105,21 @@ public class MainActivity extends AppCompatActivity {
         InfoGame();
         Settings();
         InfoPlayer();
-        btn_newgame.setOnClickListener(v -> Play(v));
 
-        btn_exit.setOnClickListener(v -> Exit(v));
+        // Nút chơi game
+        btn_newgame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Play(v);
+            }
+        });
+
+        // Nút thoát
+        btn_exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Exit(v);
+            }
+        });
     }
 }

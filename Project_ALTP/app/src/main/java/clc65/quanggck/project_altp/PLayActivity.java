@@ -13,6 +13,7 @@ import java.util.List;
 
 import clc65.quanggck.project_altp.dao.QuestionDAO;
 import clc65.quanggck.project_altp.model.Answer;
+import clc65.quanggck.project_altp.model.Difficulty;
 import clc65.quanggck.project_altp.model.Question;
 
 public class PLayActivity extends AppCompatActivity {
@@ -43,16 +44,19 @@ public class PLayActivity extends AppCompatActivity {
     // ===== B2: Khởi tạo =====
     private void KhoiTao() {
         dao = new QuestionDAO(this);
-        questionList = dao.getQuestionsByDifficulty(1);
         currentIndex = 0;
+        Difficulty difficulty = Difficulty.LEVEL_1;
+        questionList = dao.getQuestionsByDifficulty(difficulty);
+
     }
+
 
 
     private void HienThi() {
 
         if (questionList == null || questionList.isEmpty()) return;
 
-        Question q = questionList.get(currentIndex);
+        Question q = questionList.get(0);
 
         edt_namequestion.setText(q.content);
         tv_currentquestion.setText("Câu " + (currentIndex + 1));
@@ -79,19 +83,27 @@ public class PLayActivity extends AppCompatActivity {
         ResetUI();
     }
 
+
     // ===== B4: Bắt sự kiện =====
     private void BatSuKien() {
 
-        View.OnClickListener listener = v -> {
-            boolean isCorrect = (boolean) v.getTag();
+        View.OnClickListener listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-            if (isCorrect) {
-                v.setBackgroundResource(R.drawable.correct_bg);
-                SangCauMoi();
-            } else {
-                v.setBackgroundResource(R.drawable.wrong_bg);
+                if (v.getTag() == null) return;
+
+                boolean isCorrect = (boolean) v.getTag();
+
+                if (isCorrect) {
+                    v.setBackgroundResource(R.drawable.correct_bg);
+                    SangCauMoi();
+                } else {
+                    v.setBackgroundResource(R.drawable.wrong_bg);
+                }
             }
         };
+
 
         tv_a.setOnClickListener(listener);
         tv_b.setOnClickListener(listener);
@@ -111,12 +123,23 @@ public class PLayActivity extends AppCompatActivity {
     private void SangCauMoi() {
         currentIndex++;
 
-        if (currentIndex < questionList.size()) {
+        if (currentIndex < 15) {
+            Difficulty difficulty = Difficulty.fromLevel(currentIndex + 1);
+            questionList = dao.getQuestionsByDifficulty(difficulty);
+
+            if (questionList == null || questionList.isEmpty()) {
+                KetThuc();
+                return;
+            }
+
             tv_a.postDelayed(this::HienThi, 800);
         } else {
             KetThuc();
         }
+
     }
+
+
 
     // ===== Kết thúc =====
     private void KetThuc() {

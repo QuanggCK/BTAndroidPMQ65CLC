@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project_ALTP">
         <activity
+            android:name=".AnnounceActivity"
+            android:exported="false" />
+        <activity
             android:name=".PLayActivity"
             android:exported="false" />
         <activity
