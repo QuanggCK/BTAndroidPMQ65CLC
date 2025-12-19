@@ -7,7 +7,7 @@
     android:layout_height="400dp"
     android:layout_gravity="center"
     android:background="@drawable/announcement"
-    tools:context=".AnnounceActivity">
+    tools:context=".PauseActivity">
 
     <TextView
         android:id="@+id/tv_return"
@@ -24,94 +24,62 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_achievment"
-        android:layout_width="293dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="35dp"
-        android:fontFamily="@font/inter_black"
-        android:text="Kết quả:"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_namegame" />
-
-    <TextView
-        android:id="@+id/tv_namegame"
-        android:layout_width="293dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="35dp"
-        android:fontFamily="@font/inter_black"
-        android:text="Tên:"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
-
-    <TextView
         android:id="@+id/textView12"
-        android:layout_width="293dp"
-        android:layout_height="39dp"
+        android:layout_width="270dp"
+        android:layout_height="82dp"
         android:layout_marginStart="35dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="35dp"
         android:fontFamily="@font/inter_black"
-        android:text="Tiền:"
+        android:gravity="center"
+        android:text="Bạn có muốn chơi tiếp không?"
         android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_achievment" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="117dp"
-        android:layout_height="115dp"
-        android:layout_marginStart="123dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="67dp"
-        app:layout_constraintEnd_toStartOf="@+id/tv_return"
+        android:layout_width="155dp"
+        android:layout_height="143dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="104dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/trophy" />
+        app:layout_constraintTop_toBottomOf="@+id/textView12"
+        app:srcCompat="@mipmap/sad_emote" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_continue"
         android:layout_width="140dp"
         android:layout_height="55dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="11dp"
         android:background="@drawable/button"
         android:fontFamily="@font/inter_black"
-        android:text="CHƠI LẠI"
+        android:text="CHƠI TIẾP"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_homepage"
         android:layout_width="140dp"
         android:layout_height="55dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="11dp"
         android:background="@drawable/button"
         android:fontFamily="@font/inter_black"
         android:text="TRANG CHỦ"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/btn_continue"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
