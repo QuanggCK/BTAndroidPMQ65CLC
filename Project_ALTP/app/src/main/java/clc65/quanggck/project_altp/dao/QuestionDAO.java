@@ -53,10 +53,14 @@ public class QuestionDAO {
             q.b = c.getString(3);
             q.c = c.getString(4);
             q.d = c.getString(5);
-            q.correct = c.getString(6);
+            q.rate_a = c.getInt(6);
+            q.rate_b = c.getInt(7);
+            q.rate_c = c.getInt(8);
+            q.rate_d = c.getInt(9);
+            q.correct = c.getString(10);
+            int diffId = c.getInt(11);
+            q.difficulty = Difficulty.fromLevel(diffId);
 
-            int diffId = c.getInt(7);
-            q.difficulty = Difficulty.values()[diffId - 1];
 
             list.add(q);
         }

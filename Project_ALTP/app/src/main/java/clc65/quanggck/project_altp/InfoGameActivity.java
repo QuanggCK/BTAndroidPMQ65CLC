@@ -19,7 +19,7 @@ public class InfoGameActivity extends AppCompatActivity {
 
     // Hàm tìm các controller
     public void TimCT(){
-        btn_return = findViewById(R.id.btn_setting);
+        btn_return = findViewById(R.id.btn_return);
         tv_support = findViewById(R.id.tv_support);
     }
 

@@ -12,7 +12,7 @@ public class AddQuestionActivity extends AppCompatActivity {
     Button btn_return;
     // Hàm tìm các controller
     public void TimCT(){
-        btn_return = findViewById(R.id.btn_setting);
+        btn_return = findViewById(R.id.btn_return);
     }
 
     // Hàm quay về

@@ -13,33 +13,33 @@ public class SettingsActivity extends AppCompatActivity {
 
     Button btn_return, btn_mute, btn_guide;
 
-    // Hàm tìm các controller
-    public void TimCT(){
-        btn_return = findViewById(R.id.btn_setting);
-        btn_mute = findViewById(R.id.btn_mute);
-        btn_guide = findViewById(R.id.btn_guide);
-
+    // ===== Ánh xạ View =====
+    private void TimCT() {
+        btn_return = findViewById(R.id.btn_return);
+        btn_mute   = findViewById(R.id.btn_mute);
+        btn_guide  = findViewById(R.id.btn_guide);
     }
-    // Hàm quay về
-    public void Return(View v){
+
+    // ===== Quay lại Activity trước =====
+    private void Return() {
         finish();
     }
 
-    // Hàm tắt âm thanh
-    public void Mute(View v) {
+    // ===== Bật / tắt âm thanh =====
+    private void Mute() {
         if (MusicManager.isMuted()) {
             MusicManager.unmute();
             Toast.makeText(this, "Đã mở âm thanh", Toast.LENGTH_SHORT).show();
-        }else {
+        } else {
             MusicManager.mute();
             Toast.makeText(this, "Đã tắt âm thanh", Toast.LENGTH_SHORT).show();
         }
     }
 
-    // Intent hướng dẫn
-    public void Guide(View v){
-        Intent guideIntent = new Intent(SettingsActivity.this, InstructionActivity.class);
-        startActivity(guideIntent);
+
+    private void Guide() {
+        Intent intent = new Intent(SettingsActivity.this, InstructionActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -47,15 +47,28 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_settings);
+
         TimCT();
-        btn_mute.setOnClickListener(v -> Mute(v));
 
         btn_return.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Return(v);
+                Return();
             }
         });
-        btn_guide.setOnClickListener(v -> Guide(v));
+
+        btn_mute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Mute();
+            }
+        });
+
+        btn_guide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Guide();
+            }
+        });
     }
 }

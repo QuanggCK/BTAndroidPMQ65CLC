@@ -9,7 +9,7 @@
     tools:context=".PLayActivity">
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_setting"
+        android:id="@+id/btn_return"
         android:layout_width="57dp"
         android:layout_height="41dp"
         android:layout_gravity="start"
@@ -165,7 +165,7 @@
         android:text="Câu"
         android:textColor="@color/white"
         android:textSize="16dp"
-        app:layout_constraintStart_toEndOf="@+id/btn_setting"
+        app:layout_constraintStart_toEndOf="@+id/btn_return"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

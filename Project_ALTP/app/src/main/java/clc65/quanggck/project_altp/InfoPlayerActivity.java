@@ -13,7 +13,7 @@ public class InfoPlayerActivity extends AppCompatActivity {
 
     // Hàm tìm các controller
     public void TimCT(){
-        btn_return = findViewById(R.id.btn_setting);
+        btn_return = findViewById(R.id.btn_return);
 
     }
 
