@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "altp.db";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 2; // ❗ tăng version vì thay đổi DB
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -16,14 +16,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        // Difficulty
+        // ===== Difficulty (15 độ khó) =====
         db.execSQL(
                 "CREATE TABLE Difficulty (" +
-                        "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "id INTEGER PRIMARY KEY," +
                         "name TEXT NOT NULL)"
         );
 
-        // Question
+        // ===== Question =====
         db.execSQL(
                 "CREATE TABLE Question (" +
                         "id INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -33,25 +33,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         "c TEXT NOT NULL," +
                         "d TEXT NOT NULL," +
                         "correct TEXT NOT NULL," +
-                        "difficulty_id INTEGER NOT NULL)"
+                        "difficulty_id INTEGER NOT NULL," +
+                        "rate_a REAL DEFAULT 0," +
+                        "rate_b REAL DEFAULT 0," +
+                        "rate_c REAL DEFAULT 0," +
+                        "rate_d REAL DEFAULT 0)"
         );
 
-        // HighScore
+        // ===== HighScore =====
         db.execSQL(
                 "CREATE TABLE HighScore (" +
                         "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                         "player_name TEXT NOT NULL," +
                         "score INTEGER NOT NULL," +
-                        "money INTEGER NOT NULL)"
+                        "money INTEGER NOT NULL," +
+                        "createdAt INTEGER NOT NULL)"
         );
 
-        // dữ liệu mẫu
-        db.execSQL("INSERT INTO Difficulty(name) VALUES ('Dễ'),('Trung bình'),('Khó')");
+        // ===== Insert Difficulty 1 → 15 =====
+        for (int i = 1; i <= 15; i++) {
+            db.execSQL(
+                    "INSERT INTO Difficulty(id, name) VALUES (" +
+                            i + ", 'LEVEL_" + i + "')"
+            );
+        }
 
+        // ===== Dữ liệu mẫu Question =====
         db.execSQL(
                 "INSERT INTO Question(content,a,b,c,d,correct,difficulty_id) VALUES " +
                         "('1 + 1 = ?', '1','2','3','4','B',1)," +
-                        "('2 + 2 = ?', '2','3','4','5','C',1)"
+                        "('2 + 2 = ?', '2','3','4','5','C',2)"
         );
     }
 
