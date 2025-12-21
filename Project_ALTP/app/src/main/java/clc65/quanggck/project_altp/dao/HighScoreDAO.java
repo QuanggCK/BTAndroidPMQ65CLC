@@ -19,18 +19,41 @@ public class HighScoreDAO {
         db = new DatabaseHelper(context).getWritableDatabase();
     }
 
-    public void insert(String name, int score, int money) {
+    // ===== Thêm người chơi khi bắt đầu game =====
+    // score = số câu đúng
+    // money = tiền hiện tại (chưa thắng)
+    public long insertPlayer(String playerName) {
         ContentValues cv = new ContentValues();
-        cv.put("player_name", name);
-        cv.put("score", score);
-        cv.put("money", money);
-        db.insert("HighScore", null, cv);
+        cv.put("player_name", playerName);
+        cv.put("score", 0);
+        cv.put("money", 0);
+
+        return db.insert("HighScore", null, cv);
     }
 
+    // ===== Cập nhật khi kết thúc game =====
+    public void updateResult(long id, int score, int money) {
+        ContentValues cv = new ContentValues();
+        cv.put("score", score);
+        cv.put("money", money);
+
+        db.update(
+                "HighScore",
+                cv,
+                "id = ?",
+                new String[]{String.valueOf(id)}
+        );
+    }
+
+    // ===== Lấy TOP 5 theo tiền =====
     public List<HighScore> getTop5() {
         List<HighScore> list = new ArrayList<>();
+
         Cursor c = db.rawQuery(
-                "SELECT * FROM HighScore ORDER BY score DESC LIMIT 5",
+                "SELECT id, player_name, score, money " +
+                        "FROM HighScore " +
+                        "ORDER BY money DESC " +
+                        "LIMIT 5",
                 null
         );
 
@@ -42,6 +65,7 @@ public class HighScoreDAO {
             h.money = c.getInt(3);
             list.add(h);
         }
+
         c.close();
         return list;
     }

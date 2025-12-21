@@ -1,19 +1,22 @@
 package clc65.quanggck.project_altp;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn_addquestion, btn_exit, btn_infogame, btn_settings, btn_infoPlayer, btn_newgame;
+    Button btn_addquestion, btn_exit, btn_infogame,
+            btn_settings, btn_infoPlayer, btn_newgame;
 
-    // Hàm tìm các controller
+    // ===== Tìm controller =====
     private void TimCT() {
         btn_addquestion = findViewById(R.id.btn_addquestion);
         btn_exit = findViewById(R.id.btn_exit);
@@ -23,76 +26,110 @@ public class MainActivity extends AppCompatActivity {
         btn_newgame = findViewById(R.id.btn_newgame);
     }
 
-    // Intent thêm câu hỏi
+    // ===== Thêm câu hỏi =====
     private void ThemCauHoi() {
         btn_addquestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent addQuestionIntent =
+                Intent intent =
                         new Intent(MainActivity.this, AddQuestionActivity.class);
-                startActivity(addQuestionIntent);
+                startActivity(intent);
             }
         });
     }
 
-    // Hàm thoát game
-    public void Exit(View v) {
-        new AlertDialog.Builder(MainActivity.this)
-                .setTitle("Thoát game?")
-                .setMessage("Bạn có chắc muốn thoát không?")
-                .setPositiveButton("Có", new android.content.DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(android.content.DialogInterface dialog, int which) {
-                        finishAffinity();
-                        System.exit(0);
-                    }
-                })
-                .setNegativeButton("Không", null)
-                .show();
-    }
-
-    // Intent info game
+    // ===== Info game =====
     private void InfoGame() {
         btn_infogame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent infoGameIntent =
+                Intent intent =
                         new Intent(MainActivity.this, InfoGameActivity.class);
-                startActivity(infoGameIntent);
+                startActivity(intent);
             }
         });
     }
 
-    // Intent settings
+    // ===== Settings =====
     private void Settings() {
         btn_settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent settingsIntent =
+                Intent intent =
                         new Intent(MainActivity.this, SettingsActivity.class);
-                startActivity(settingsIntent);
+                startActivity(intent);
             }
         });
     }
 
-    // Intent info player
+    // ===== Info Player =====
     private void InfoPlayer() {
         btn_infoPlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent infoPlayerIntent =
+                Intent intent =
                         new Intent(MainActivity.this, InfoPlayerActivity.class);
-                startActivity(infoPlayerIntent);
+                startActivity(intent);
             }
         });
     }
 
-    // Intent chơi
-    public void Play(View v) {
-        Intent playIntent = new Intent(MainActivity.this, PLayActivity.class);
-        startActivity(playIntent);
+    // ===== Thoát game =====
+    private void ExitGame() {
+        btn_exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(MainActivity.this)
+                        .setTitle("Thoát game?")
+                        .setMessage("Bạn có chắc muốn thoát không?")
+                        .setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                finishAffinity();
+                                System.exit(0);
+                            }
+                        })
+                        .setNegativeButton("Không", null)
+                        .show();
+            }
+        });
     }
 
+    // ===== Dialog nhập tên + chơi =====
+    private void PlayWithName() {
+
+        AlertDialog.Builder builder =
+                new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Nhập tên người chơi");
+
+        final EditText edtName = new EditText(this);
+        edtName.setHint("Tên của bạn");
+        builder.setView(edtName);
+
+        builder.setPositiveButton("Chơi", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                String playerName =
+                        edtName.getText().toString().trim();
+
+                if (playerName.isEmpty()) {
+                    edtName.setError("Vui lòng nhập tên");
+                    return;
+                }
+
+                Intent intent =
+                        new Intent(MainActivity.this, PLayActivity.class);
+                intent.putExtra("player_name", playerName);
+                startActivity(intent);
+            }
+        });
+
+        builder.setNegativeButton("Hủy", null);
+        builder.show();
+    }
+
+    // ===== onCreate =====
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,25 +137,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         MusicManager.play(this);
+
         TimCT();
         ThemCauHoi();
         InfoGame();
         Settings();
         InfoPlayer();
+        ExitGame();
 
         // Nút chơi game
         btn_newgame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Play(v);
-            }
-        });
-
-        // Nút thoát
-        btn_exit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Exit(v);
+                PlayWithName();
             }
         });
     }

@@ -13,9 +13,11 @@
         android:theme="@style/Theme.Project_ALTP">
         <activity
             android:name=".PauseActivity"
+            android:theme="@style/Theme.Project_ALTP.Dialog"
             android:exported="false" />
         <activity
             android:name=".AnnounceActivity"
+            android:theme="@style/Theme.Project_ALTP.Dialog"
             android:exported="false" />
         <activity
             android:name=".PLayActivity"

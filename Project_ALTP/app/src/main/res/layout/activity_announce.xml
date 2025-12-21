@@ -10,21 +10,6 @@
     tools:context=".AnnounceActivity">
 
     <TextView
-        android:id="@+id/tv_return"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="33dp"
-        android:fontFamily="@font/inter_black"
-        android:text="X"
-        android:clickable="true"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/tv_achievment"
         android:layout_width="293dp"
         android:layout_height="39dp"
@@ -81,8 +66,6 @@
         android:layout_height="115dp"
         android:layout_marginStart="123dp"
         android:layout_marginTop="26dp"
-        android:layout_marginEnd="67dp"
-        app:layout_constraintEnd_toStartOf="@+id/tv_return"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/trophy" />

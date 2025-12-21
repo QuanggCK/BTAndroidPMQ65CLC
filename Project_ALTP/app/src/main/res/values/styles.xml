@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Theme dạng Dialog cho AnnounceActivity -->
+    <style name="Theme.Project_ALTP.Dialog"
+        parent="Theme.MaterialComponents.DayNight.Dialog">
+
+        <!-- Cho phép trong suốt -->
+        <item name="android:windowIsTranslucent">true</item>
+
+        <!-- Nền trong suốt -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+
+        <!-- Làm mờ nền -->
+        <item name="android:backgroundDimEnabled">true</item>
+
+        <!-- Độ mờ -->
+        <item name="android:backgroundDimAmount">0.6</item>
+
+    </style>
+
+</resources>
