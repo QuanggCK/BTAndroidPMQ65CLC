@@ -41,7 +41,7 @@
             android:id="@+id/btn_newgame"
             android:layout_width="220dp"
             android:layout_height="55dp"
-            android:layout_marginTop="42dp"
+            android:layout_marginTop="44dp"
             android:background="@drawable/button"
             android:text="GAME MỚI"
             android:textColor="@color/white"
@@ -52,12 +52,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_addquestion"
+            android:id="@+id/btn_highscore"
             android:layout_width="220dp"
             android:layout_height="55dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/button"
-            android:text="THÊM CÂU HỎI"
+            android:text="BẢNG XẾP HẠNG"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -65,7 +65,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_newgame" />
 
-        <!-- BUTTON THÔNG TIN -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_infogame"
             android:layout_width="220dp"
@@ -78,49 +77,50 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_addquestion" />
-
-        <!-- BOTTOM BUTTONS -->
+            app:layout_constraintTop_toBottomOf="@id/btn_highscore" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_settings"
         android:layout_width="55dp"
         android:layout_height="55dp"
+        android:layout_marginTop="-28dp"
+        android:layout_marginEnd="35dp"
         android:background="@drawable/mini_button"
         android:foreground="@mipmap/setting"
-        app:layout_constraintTop_toBottomOf="@+id/layout_mainbox"
         app:layout_constraintEnd_toStartOf="@+id/btn_infoPlayer"
-        android:layout_marginTop="-28dp"
-        android:layout_marginEnd="35dp" />
+        app:layout_constraintTop_toBottomOf="@+id/layout_mainbox" />
 
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_infoPlayer"
         android:layout_width="55dp"
         android:layout_height="55dp"
+        android:layout_marginTop="-28dp"
         android:background="@drawable/mini_button"
         android:foreground="@mipmap/info"
-        app:layout_constraintTop_toBottomOf="@+id/layout_mainbox"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="-28dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_mainbox" />
 
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_exit"
-        android:onClick="Exit"
         android:layout_width="55dp"
         android:layout_height="55dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="-28dp"
         android:background="@drawable/mini_button"
         android:foreground="@mipmap/exit"
-        app:layout_constraintTop_toBottomOf="@+id/layout_mainbox"
+        android:onClick="Exit"
         app:layout_constraintStart_toEndOf="@+id/btn_infoPlayer"
-        android:layout_marginTop="-28dp"
-        android:layout_marginStart="35dp" />
+        app:layout_constraintTop_toBottomOf="@+id/layout_mainbox" />
 
-
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

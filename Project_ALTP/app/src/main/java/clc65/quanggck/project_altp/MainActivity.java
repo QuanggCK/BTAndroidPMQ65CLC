@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     Button  btn_exit, btn_infogame,
-            btn_settings, btn_infoPlayer, btn_newgame;
+            btn_settings, btn_infoPlayer, btn_newgame, btn_highscore;
 
     // ===== Tìm controller =====
     private void TimCT() {
@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         btn_settings = findViewById(R.id.btn_settings);
         btn_infoPlayer = findViewById(R.id.btn_infoPlayer);
         btn_newgame = findViewById(R.id.btn_newgame);
+        btn_highscore = findViewById(R.id.btn_highscore);
     }
 
 
@@ -118,7 +119,18 @@ public class MainActivity extends AppCompatActivity {
         builder.show();
     }
 
-    // ===== onCreate =====
+    // ===== High Score =====
+    private void HighScore() {
+        btn_highscore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, new HighScoreFragment())
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -132,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
         Settings();
         InfoPlayer();
         ExitGame();
+        HighScore();
 
         // Nút chơi game
         btn_newgame.setOnClickListener(new View.OnClickListener() {

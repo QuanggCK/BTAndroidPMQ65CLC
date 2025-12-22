@@ -20,13 +20,13 @@ public class HighScoreDAO {
     }
 
     // ===== Thêm người chơi khi bắt đầu game =====
-    // score = số câu đúng
-    // money = tiền hiện tại (chưa thắng)
     public long insertPlayer(String playerName) {
         ContentValues cv = new ContentValues();
         cv.put("player_name", playerName);
         cv.put("score", 0);
         cv.put("money", 0);
+        // QUAN TRỌNG: Phải thêm thời gian tạo, nếu không sẽ lỗi NOT NULL
+        cv.put("createdAt", System.currentTimeMillis());
 
         return db.insert("HighScore", null, cv);
     }
@@ -49,20 +49,20 @@ public class HighScoreDAO {
     public List<HighScore> getTop5() {
         List<HighScore> list = new ArrayList<>();
 
+        // Query sắp xếp giảm dần theo tiền
         Cursor c = db.rawQuery(
-                "SELECT id, player_name, score, money " +
-                        "FROM HighScore " +
-                        "ORDER BY money DESC " +
-                        "LIMIT 5",
+                "SELECT id, player_name, score, money FROM HighScore ORDER BY money DESC LIMIT 5",
                 null
         );
 
         while (c.moveToNext()) {
             HighScore h = new HighScore();
-            h.id = c.getInt(0);
-            h.playerName = c.getString(1);
-            h.score = c.getInt(2);
-            h.money = c.getInt(3);
+            // Dùng getColumnIndexOrThrow cho an toàn
+            h.id = c.getInt(c.getColumnIndexOrThrow("id"));
+            h.playerName = c.getString(c.getColumnIndexOrThrow("player_name"));
+            h.score = c.getInt(c.getColumnIndexOrThrow("score"));
+            h.money = c.getInt(c.getColumnIndexOrThrow("money"));
+
             list.add(h);
         }
 

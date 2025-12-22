@@ -1,64 +1,122 @@
 package clc65.quanggck.project_altp;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HighScoreFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import java.util.List;
+
+import clc65.quanggck.project_altp.dao.HighScoreDAO;
+import clc65.quanggck.project_altp.model.HighScore;
+
 public class HighScoreFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    // Khai báo biến
+    ListView lvHighScore;
+    Button btnReturn;
+    HighScoreDAO dao;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public HighScoreFragment() {
-        // Required empty public constructor
+    private void TimCT(View view) {
+        lvHighScore = view.findViewById(R.id.lv_highscore);
+        btnReturn = view.findViewById(R.id.btn_return);
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HighScoreFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static HighScoreFragment newInstance(String param1, String param2) {
-        HighScoreFragment fragment = new HighScoreFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        // 1. Gắn layout xml vào Fragment
+        View view = inflater.inflate(R.layout.fragment_high_score, container, false);
+
+        // 2. Ánh xạ View (Truyền biến view vừa tạo vào hàm)
+        TimCT(view);
+
+        // 3. Khởi tạo DAO
+        dao = new HighScoreDAO(getContext());
+
+        // 4. Load dữ liệu lên ListView
+        loadData();
+
+        // 5. Sự kiện nút Quay lại
+        btnReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Đóng Fragment hiện tại để quay về màn hình trước (Menu)
+                getParentFragmentManager().popBackStack();
+            }
+        });
+
+        return view;
+    }
+
+    // ===== Hàm lấy dữ liệu và đổ vào List =====
+    private void loadData() {
+        if (dao != null) {
+            // Lấy danh sách Top 5 từ Database
+            List<HighScore> list = dao.getTop5();
+
+            // Tạo Adapter và gán vào ListView
+            HighScoreAdapter adapter = new HighScoreAdapter(list);
+            lvHighScore.setAdapter(adapter);
         }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_high_score, container, false);
+    // ========================================================
+    // CLASS ADAPTER (Viết lồng bên trong để xử lý giao diện dòng)
+    // ========================================================
+    class HighScoreAdapter extends BaseAdapter {
+        List<HighScore> dataList;
+
+        public HighScoreAdapter(List<HighScore> dataList) {
+            this.dataList = dataList;
+        }
+
+        @Override
+        public int getCount() {
+            return dataList.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return dataList.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            // 1. Tạo View cho dòng nếu chưa có
+            if (convertView == null) {
+                convertView = LayoutInflater.from(getContext())
+                        .inflate(R.layout.item_high_score, parent, false);
+            }
+
+            // 2. Lấy đối tượng dữ liệu tại vị trí hiện tại
+            HighScore item = dataList.get(position);
+
+            // 3. Ánh xạ các View trong dòng (item_high_score.xml)
+            TextView tvName = convertView.findViewById(R.id.tv_item_name);
+            TextView tvScore = convertView.findViewById(R.id.tv_item_score);
+
+            // 4. Gán dữ liệu (Dùng tên biến playerName như bạn yêu cầu)
+            tvName.setText(item.playerName);
+
+            // Định dạng tiền tệ cho đẹp (Ví dụ: 150000 -> 150,000 VND)
+            String formattedMoney = String.format("%,d VND", item.money);
+            tvScore.setText(formattedMoney);
+
+            return convertView;
+        }
     }
 }
