@@ -63,7 +63,6 @@ public class PLayActivity extends AppCompatActivity {
     private Question currentQuestion;
 
     private void HienThi() {
-
         if (questionList == null || questionList.isEmpty()) {
             KetThuc();
             return;
@@ -77,14 +76,19 @@ public class PLayActivity extends AppCompatActivity {
         tv_currentbonus.setText("+" + tinhTien(currentIndex + 1));
 
         List<String> answers = new ArrayList<>();
-
         answers.add(currentQuestion.a);
         answers.add(currentQuestion.b);
         answers.add(currentQuestion.c);
         answers.add(currentQuestion.d);
 
+        // Reset correctAnswer để tránh giữ giá trị của câu cũ
+        correctAnswer = "";
+
         // XÁC ĐỊNH ĐÁP ÁN ĐÚNG (TEXT)
-        switch (currentQuestion.correct.toUpperCase()) {
+        // Dùng trim() và toUpperCase() ngay từ đầu để tránh lỗi do data bẩn
+        String dapAnDung = (currentQuestion.correct != null) ? currentQuestion.correct.trim().toUpperCase() : "";
+
+        switch (dapAnDung) {
             case "A":
                 correctAnswer = currentQuestion.a;
                 break;
@@ -97,15 +101,19 @@ public class PLayActivity extends AppCompatActivity {
             case "D":
                 correctAnswer = currentQuestion.d;
                 break;
+            default:
+                // Nếu data bị lỗi không phải A,B,C,D, gán tạm vào A để không crash
+                correctAnswer = currentQuestion.a;
+                break;
         }
 
         Collections.shuffle(answers);
 
-        // HIỂN THỊ + GÁN TAG = TEXT
-        tv_a.setText("A: " + answers.get(0));
-        tv_b.setText("B: " + answers.get(1));
-        tv_c.setText("C: " + answers.get(2));
-        tv_d.setText("D: " + answers.get(3));
+        // HIỂN THỊ + GÁN TAG
+        tv_a.setText(answers.get(0));
+        tv_b.setText(answers.get(1));
+        tv_c.setText(answers.get(2));
+        tv_d.setText(answers.get(3));
 
         tv_a.setTag(answers.get(0));
         tv_b.setTag(answers.get(1));
@@ -113,7 +121,27 @@ public class PLayActivity extends AppCompatActivity {
         tv_d.setTag(answers.get(3));
 
         ResetUI();
-        BatSuKien(); // gắn lại click
+        BatSuKien();
+    }
+
+    private void HienThiDapAnDung() {
+        // Kiểm tra an toàn trước khi xử lý
+        if (correctAnswer == null) return;
+
+        String correct = correctAnswer.trim();
+
+        // Kiểm tra từng ô, nếu trùng nội dung với đáp án đúng thì hiện màu xanh
+        checkAndHighLight(tv_a, correct);
+        checkAndHighLight(tv_b, correct);
+        checkAndHighLight(tv_c, correct);
+        checkAndHighLight(tv_d, correct);
+    }
+
+    // Hàm phụ để code gọn hơn
+    private void checkAndHighLight(TextView tv, String correctText) {
+        if (tv.getTag() != null && tv.getTag().toString().trim().equals(correctText)) {
+            tv.setBackgroundResource(R.drawable.correct_bg);
+        }
     }
 
 
@@ -121,13 +149,12 @@ public class PLayActivity extends AppCompatActivity {
 
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
 
                 if (v.getTag() == null) return;
 
                 String chosenAnswer = (String) v.getTag();
                 boolean isCorrect = chosenAnswer.equals(correctAnswer);
-
 
                 // khóa click
                 tv_a.setOnClickListener(null);
@@ -139,7 +166,7 @@ public class PLayActivity extends AppCompatActivity {
                     v.setBackgroundResource(R.drawable.correct_bg);
                     money = tinhTien(currentIndex + 1);
 
-                    tv_a.postDelayed(new Runnable() {
+                    v.postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             SangCauMoi();
@@ -148,15 +175,14 @@ public class PLayActivity extends AppCompatActivity {
 
                 } else {
                     v.setBackgroundResource(R.drawable.wrong_bg);
-
-                    tv_a.postDelayed(new Runnable() {
+                    HienThiDapAnDung();
+                    v.postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             KetThuc();
                         }
                     }, 800);
                 }
-
             }
         };
 
@@ -165,6 +191,7 @@ public class PLayActivity extends AppCompatActivity {
         tv_c.setOnClickListener(listener);
         tv_d.setOnClickListener(listener);
     }
+
 
 
     private void ResetUI() {
@@ -178,10 +205,8 @@ public class PLayActivity extends AppCompatActivity {
         currentIndex++;
 
         if (currentIndex < 15) {
-            questionList = dao.getQuestionsByDifficulty(
-                    Difficulty.fromLevel(currentIndex + 1)
-            );
-            tv_a.postDelayed(this::HienThi, 800);
+            questionList = dao.getQuestionsByDifficulty(Difficulty.fromLevel(currentIndex + 1));
+            HienThi();
         } else {
             KetThuc();
         }
@@ -211,7 +236,6 @@ public class PLayActivity extends AppCompatActivity {
         TimCT();
         KhoiTao();
         HienThi();
-        BatSuKien();
 
         btn_pause.setOnClickListener(new View.OnClickListener() {
             @Override

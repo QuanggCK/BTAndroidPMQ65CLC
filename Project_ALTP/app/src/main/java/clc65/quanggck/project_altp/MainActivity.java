@@ -13,12 +13,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn_addquestion, btn_exit, btn_infogame,
+    Button  btn_exit, btn_infogame,
             btn_settings, btn_infoPlayer, btn_newgame;
 
     // ===== Tìm controller =====
     private void TimCT() {
-        btn_addquestion = findViewById(R.id.btn_addquestion);
         btn_exit = findViewById(R.id.btn_exit);
         btn_infogame = findViewById(R.id.btn_infogame);
         btn_settings = findViewById(R.id.btn_settings);
@@ -26,17 +25,7 @@ public class MainActivity extends AppCompatActivity {
         btn_newgame = findViewById(R.id.btn_newgame);
     }
 
-    // ===== Thêm câu hỏi =====
-    private void ThemCauHoi() {
-        btn_addquestion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent =
-                        new Intent(MainActivity.this, AddQuestionActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
+
 
     // ===== Info game =====
     private void InfoGame() {
@@ -139,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
         MusicManager.play(this);
 
         TimCT();
-        ThemCauHoi();
         InfoGame();
         Settings();
         InfoPlayer();

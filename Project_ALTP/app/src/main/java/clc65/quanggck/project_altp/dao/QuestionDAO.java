@@ -16,78 +16,63 @@ public class QuestionDAO {
     private SQLiteDatabase db;
 
     public QuestionDAO(Context context) {
+        // Mở kết nối Database
         db = new DatabaseHelper(context).getReadableDatabase();
     }
 
-    public List<Question> getAll() {
+    // Lấy câu hỏi theo độ khó (Level 1 -> 15)
+    public List<Question> getQuestionsByDifficulty(Difficulty difficulty) {
         List<Question> list = new ArrayList<>();
-        Cursor c = db.rawQuery("SELECT * FROM Question", null);
 
+        // Difficulty Enum có value là 1,2,3... khớp với difficulty_id trong DB
+        int levelId = difficulty.value;
+
+        // Query tìm câu hỏi có difficulty_id tương ứng
+        Cursor c = db.rawQuery(
+                "SELECT * FROM Question WHERE difficulty_id = ?",
+                new String[]{ String.valueOf(levelId) }
+        );
+
+        // Duyệt qua từng dòng kết quả
         while (c.moveToNext()) {
             list.add(cursorToQuestion(c));
         }
-
         c.close();
         return list;
     }
 
-    public List<Question> getQuestionsByDifficulty(Difficulty difficulty) {
-
-        List<Question> list = new ArrayList<>();
-
-        // Enum LEVEL_1 → LEVEL_15
-        // ordinal(): 0 → 14
-        int difficultyId = difficulty.ordinal() + 1;
-
-        Cursor c = db.rawQuery(
-                "SELECT * FROM Question WHERE difficulty_id = ?",
-                new String[]{ String.valueOf(difficultyId) }
-        );
-
-        while (c.moveToNext()) {
-            Question q = new Question();
-
-            q.id = c.getInt(0);
-            q.content = c.getString(1);
-            q.a = c.getString(2);
-            q.b = c.getString(3);
-            q.c = c.getString(4);
-            q.d = c.getString(5);
-            q.rate_a = c.getInt(6);
-            q.rate_b = c.getInt(7);
-            q.rate_c = c.getInt(8);
-            q.rate_d = c.getInt(9);
-            q.correct = c.getString(10);
-            int diffId = c.getInt(11);
-            q.difficulty = Difficulty.fromLevel(diffId);
-
-
-            list.add(q);
-        }
-
-        c.close();
-        return list;
-    }
-
-
-
-    // ======================
-    // Convert Cursor → Question
-    // ======================
+    // Hàm chuyển đổi từ con trỏ Database (Cursor) sang Object (Question)
+    // Dùng getColumnIndex để TỰ ĐỘNG tìm vị trí cột, không lo bị sai thứ tự
     private Question cursorToQuestion(Cursor c) {
-
         Question q = new Question();
 
-        q.id = c.getInt(0);
-        q.content = c.getString(1);
-        q.a = c.getString(2);
-        q.b = c.getString(3);
-        q.c = c.getString(4);
-        q.d = c.getString(5);
-        q.correct = c.getString(6);
+        try {
+            // Lấy dữ liệu dựa trên TÊN CỘT trong DatabaseHelper
+            q.id = c.getInt(c.getColumnIndexOrThrow("id"));
+            q.content = c.getString(c.getColumnIndexOrThrow("content"));
+            q.a = c.getString(c.getColumnIndexOrThrow("a"));
+            q.b = c.getString(c.getColumnIndexOrThrow("b"));
+            q.c = c.getString(c.getColumnIndexOrThrow("c"));
+            q.d = c.getString(c.getColumnIndexOrThrow("d"));
+            q.correct = c.getString(c.getColumnIndexOrThrow("correct"));
 
-        int difficultyId = c.getInt(7);
-        q.difficulty = Difficulty.values()[difficultyId - 1];
+            // Xử lý cột difficulty_id
+            int diffId = c.getInt(c.getColumnIndexOrThrow("difficulty_id"));
+            q.difficulty = Difficulty.fromLevel(diffId);
+
+            // Xử lý các cột tỉ lệ khán giả (nếu cần dùng sau này)
+            // Vì có thể cột này null hoặc chưa dùng đến, ta dùng try-catch nhẹ hoặc kiểm tra
+            int idxRateA = c.getColumnIndex("rate_a");
+            if (idxRateA != -1) {
+                q.rate_a = c.getInt(idxRateA);
+                q.rate_b = c.getInt(c.getColumnIndex("rate_b"));
+                q.rate_c = c.getInt(c.getColumnIndex("rate_c"));
+                q.rate_d = c.getInt(c.getColumnIndex("rate_d"));
+            }
+
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
 
         return q;
     }
