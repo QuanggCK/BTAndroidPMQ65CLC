@@ -73,7 +73,7 @@ public class PLayActivity extends AppCompatActivity {
 
         edt_namequestion.setText(currentQuestion.content);
         tv_currentquestion.setText("Câu " + (currentIndex + 1));
-        tv_currentbonus.setText("+" + tinhTien(currentIndex + 1));
+        tv_currentbonus.setText(String.format("%,d", tinhTien(currentIndex)));
 
         List<String> answers = new ArrayList<>();
         answers.add(currentQuestion.a);
