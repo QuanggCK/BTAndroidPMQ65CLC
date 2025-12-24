@@ -19,54 +19,51 @@ public class HighScoreDAO {
         db = new DatabaseHelper(context).getWritableDatabase();
     }
 
-    // ===== Thêm người chơi khi bắt đầu game =====
-    public long insertPlayer(String playerName) {
+    // ===== 1. Hàm này dùng để LƯU KẾT QUẢ CUỐI CÙNG (Dùng trong AnnounceActivity) =====
+    public void insertHighScore(String name, int money) {
         ContentValues cv = new ContentValues();
-        cv.put("player_name", playerName);
-        cv.put("score", 0);
-        cv.put("money", 0);
-        // QUAN TRỌNG: Phải thêm thời gian tạo, nếu không sẽ lỗi NOT NULL
-        cv.put("createdAt", System.currentTimeMillis());
-
-        return db.insert("HighScore", null, cv);
-    }
-
-    // ===== Cập nhật khi kết thúc game =====
-    public void updateResult(long id, int score, int money) {
-        ContentValues cv = new ContentValues();
-        cv.put("score", score);
+        cv.put("player_name", name);
         cv.put("money", money);
 
-        db.update(
-                "HighScore",
-                cv,
-                "id = ?",
-                new String[]{String.valueOf(id)}
-        );
+        // Nếu database có cột score thì thêm, ko thì để 0 hoặc bỏ dòng này
+        cv.put("score", 0);
+
+        // Nếu database có cột createdAt thì thêm dòng này
+        cv.put("createdAt", System.currentTimeMillis());
+
+        db.insert("HighScore", null, cv);
     }
 
-    // ===== Lấy TOP 5 theo tiền =====
+    // ===== 2. Lấy TOP 5 theo tiền =====
     public List<HighScore> getTop5() {
         List<HighScore> list = new ArrayList<>();
 
-        // Query sắp xếp giảm dần theo tiền
+        // Query sắp xếp giảm dần theo tiền (DESC)
         Cursor c = db.rawQuery(
-                "SELECT id, player_name, score, money FROM HighScore ORDER BY money DESC LIMIT 5",
+                "SELECT * FROM HighScore ORDER BY money DESC LIMIT 5",
                 null
         );
 
-        while (c.moveToNext()) {
-            HighScore h = new HighScore();
-            // Dùng getColumnIndexOrThrow cho an toàn
-            h.id = c.getInt(c.getColumnIndexOrThrow("id"));
-            h.playerName = c.getString(c.getColumnIndexOrThrow("player_name"));
-            h.score = c.getInt(c.getColumnIndexOrThrow("score"));
-            h.money = c.getInt(c.getColumnIndexOrThrow("money"));
+        if (c != null) {
+            while (c.moveToNext()) {
+                HighScore h = new HighScore();
 
-            list.add(h);
+                // Lấy dữ liệu
+                h.id = c.getInt(c.getColumnIndexOrThrow("id"));
+                h.playerName = c.getString(c.getColumnIndexOrThrow("player_name"));
+                h.money = c.getInt(c.getColumnIndexOrThrow("money"));
+
+                // Nếu model HighScore của bạn có biến score thì lấy, ko thì thôi
+                try {
+                    h.score = c.getInt(c.getColumnIndexOrThrow("score"));
+                } catch (Exception e) {
+                    h.score = 0;
+                }
+
+                list.add(h);
+            }
+            c.close();
         }
-
-        c.close();
         return list;
     }
 }

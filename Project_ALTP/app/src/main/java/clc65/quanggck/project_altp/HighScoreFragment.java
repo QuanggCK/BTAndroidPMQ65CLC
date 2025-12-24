@@ -25,6 +25,7 @@ public class HighScoreFragment extends Fragment {
     Button btnReturn;
     HighScoreDAO dao;
 
+    // 1. Hàm TimCT cho Fragment (Ánh xạ ListView và Nút quay lại)
     private void TimCT(View view) {
         lvHighScore = view.findViewById(R.id.lv_highscore);
         btnReturn = view.findViewById(R.id.btn_return);
@@ -33,45 +34,38 @@ public class HighScoreFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        // 1. Gắn layout xml vào Fragment
         View view = inflater.inflate(R.layout.fragment_high_score, container, false);
 
-        // 2. Ánh xạ View (Truyền biến view vừa tạo vào hàm)
-        TimCT(view);
+        TimCT(view); // Gọi hàm ánh xạ
 
-        // 3. Khởi tạo DAO
         dao = new HighScoreDAO(getContext());
-
-        // 4. Load dữ liệu lên ListView
         loadData();
 
-        // 5. Sự kiện nút Quay lại
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Đóng Fragment hiện tại để quay về màn hình trước (Menu)
-                getParentFragmentManager().popBackStack();
+                // Quay lại màn hình trước
+                if (getParentFragmentManager().getBackStackEntryCount() > 0) {
+                    getParentFragmentManager().popBackStack();
+                } else {
+                    // Nếu Fragment được nhúng trực tiếp thì có thể cần finish Activity chứa nó
+                    // getActivity().finish();
+                }
             }
         });
 
         return view;
     }
 
-    // ===== Hàm lấy dữ liệu và đổ vào List =====
     private void loadData() {
         if (dao != null) {
-            // Lấy danh sách Top 5 từ Database
             List<HighScore> list = dao.getTop5();
-
-            // Tạo Adapter và gán vào ListView
             HighScoreAdapter adapter = new HighScoreAdapter(list);
             lvHighScore.setAdapter(adapter);
         }
     }
 
-    // ========================================================
-    // CLASS ADAPTER (Viết lồng bên trong để xử lý giao diện dòng)
-    // ========================================================
+    // ===== ADAPTER =====
     class HighScoreAdapter extends BaseAdapter {
         List<HighScore> dataList;
 
@@ -96,27 +90,40 @@ public class HighScoreFragment extends Fragment {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            // 1. Tạo View cho dòng nếu chưa có
+            ViewHolder holder;
+
+            // Nếu view chưa được tạo thì tạo mới và ánh xạ (TimCT)
             if (convertView == null) {
                 convertView = LayoutInflater.from(getContext())
                         .inflate(R.layout.item_high_score, parent, false);
+
+                holder = new ViewHolder();
+                holder.TimCT(convertView); // Gọi hàm TimCT của item
+
+                convertView.setTag(holder);
+            } else {
+                // Nếu đã có thì lấy lại holder cũ (không cần findView lại -> mượt hơn)
+                holder = (ViewHolder) convertView.getTag();
             }
 
-            // 2. Lấy đối tượng dữ liệu tại vị trí hiện tại
+            // Gán dữ liệu
             HighScore item = dataList.get(position);
+            holder.tvName.setText(item.playerName);
 
-            // 3. Ánh xạ các View trong dòng (item_high_score.xml)
-            TextView tvName = convertView.findViewById(R.id.tv_item_name);
-            TextView tvScore = convertView.findViewById(R.id.tv_item_score);
 
-            // 4. Gán dữ liệu (Dùng tên biến playerName như bạn yêu cầu)
-            tvName.setText(item.playerName);
-
-            // Định dạng tiền tệ cho đẹp (Ví dụ: 150000 -> 150,000 VND)
             String formattedMoney = String.format("%,d VND", item.money);
-            tvScore.setText(formattedMoney);
+            holder.tvScore.setText(formattedMoney);
 
             return convertView;
+        }
+
+        private class ViewHolder {
+            TextView tvName, tvScore;
+
+            public void TimCT(View view) {
+                tvName = view.findViewById(R.id.tv_item_name);
+                tvScore = view.findViewById(R.id.tv_item_score);
+            }
         }
     }
 }

@@ -8,7 +8,6 @@
     android:background="@drawable/gradient_bg"
     tools:context=".AddQuestionActivity">
 
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_return"
         android:layout_width="57dp"
@@ -68,10 +67,39 @@
         android:layout_height="81dp"
         android:layout_marginBottom="20dp"
         android:ems="10"
-        android:inputType="text"
+        android:inputType="textMultiLine|textCapSentences"
+        android:gravity="top|start"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
         app:layout_constraintStart_toStartOf="@+id/imageView3" />
+
+
+    <Spinner
+        android:id="@+id/sp_diff"
+        android:layout_width="186dp"
+        android:layout_height="47dp"
+        android:layout_marginEnd="52dp"
+        android:background="@drawable/mini_button"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:paddingStart="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.393" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="26dp"
+        android:fontFamily="@font/inter_black"
+        android:text="Độ khó: "
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/sp_diff"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
         android:id="@+id/tv_a"
@@ -83,65 +111,14 @@
         android:background="@drawable/mini_button"
         android:ems="10"
         android:fontFamily="@font/inter_black"
-        android:inputType="text"
+        android:inputType="text|textCapSentences"
         android:paddingStart="15dp"
-        android:text="Đúng:"
+        android:hint="Đáp án đúng:"
         android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-    <EditText
-        android:id="@+id/tv_diff"
-        android:layout_width="212dp"
-        android:layout_height="48dp"
-        android:background="@drawable/mini_button"
-        android:ems="10"
-        android:fontFamily="@font/inter_black"
-        android:inputType="text"
-        android:paddingStart="15dp"
-        android:text="Độ khó:"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-    <EditText
-        android:id="@+id/tv_d"
-        android:layout_width="363dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/mini_button"
-        android:ems="10"
-        android:fontFamily="@font/inter_black"
-        android:inputType="text"
-        android:paddingStart="15dp"
-        android:text="Sai:"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_c" />
-
-    <EditText
-        android:id="@+id/tv_c"
-        android:layout_width="363dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/mini_button"
-        android:ems="10"
-        android:fontFamily="@font/inter_black"
-        android:inputType="text"
-        android:paddingStart="15dp"
-        android:text="Sai:"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_b" />
 
     <EditText
         android:id="@+id/tv_b"
@@ -153,13 +130,52 @@
         android:background="@drawable/mini_button"
         android:ems="10"
         android:fontFamily="@font/inter_black"
-        android:inputType="text"
+        android:inputType="text|textCapSentences"
         android:paddingStart="15dp"
-        android:text="Sai:"
+        android:hint="Đáp án sai:"
         android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_a" />
+
+    <EditText
+        android:id="@+id/tv_c"
+        android:layout_width="363dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/mini_button"
+        android:ems="10"
+        android:fontFamily="@font/inter_black"
+        android:inputType="text|textCapSentences"
+        android:paddingStart="15dp"
+        android:hint="Đáp án sai:"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_b" />
+
+    <EditText
+        android:id="@+id/tv_d"
+        android:layout_width="363dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/mini_button"
+        android:ems="10"
+        android:fontFamily="@font/inter_black"
+        android:inputType="text|textCapSentences"
+        android:paddingStart="15dp"
+        android:hint="Đáp án sai:"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_c" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_confirm"
@@ -177,6 +193,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Random;
 
 import clc65.quanggck.project_altp.dao.QuestionDAO;
-import clc65.quanggck.project_altp.model.Answer;
 import clc65.quanggck.project_altp.model.Difficulty;
 import clc65.quanggck.project_altp.model.Question;
 
@@ -48,7 +47,13 @@ public class PLayActivity extends AppCompatActivity {
     private void KhoiTao() {
         dao = new QuestionDAO(this);
         currentIndex = 0;
+
+        // 1. Lấy danh sách Level 1
         questionList = dao.getQuestionsByDifficulty(Difficulty.LEVEL_1);
+
+        if (questionList != null) {
+            Collections.shuffle(questionList);
+        }
     }
 
     private int tinhTien(int cauSo) {
@@ -206,6 +211,10 @@ public class PLayActivity extends AppCompatActivity {
 
         if (currentIndex < 15) {
             questionList = dao.getQuestionsByDifficulty(Difficulty.fromLevel(currentIndex + 1));
+            
+            if (questionList != null) {
+                Collections.shuffle(questionList);
+            }
             HienThi();
         } else {
             KetThuc();
@@ -216,7 +225,9 @@ public class PLayActivity extends AppCompatActivity {
         Intent intent = new Intent(PLayActivity.this, AnnounceActivity.class);
         intent.putExtra("money", money);
         intent.putExtra("player_name", playerName);
+        intent.putExtra("question_count", currentIndex);
         startActivity(intent);
+
     }
 
     private void PauseGame() {

@@ -7,26 +7,33 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast; // Import thêm Toast để báo hiệu nếu cần
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+// Giả sử AddQuestionActivity nằm cùng package, nếu khác package hãy import vào
+// import clc65.quanggck.project_altp.admin.AddQuestionActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     Button  btn_exit, btn_infogame,
-            btn_settings, btn_infoPlayer, btn_newgame, btn_highscore;
+            btn_settings, btn_newgame, btn_highscore;
+    TextView tv_name;
+
+    private int tapCount = 0;
+    private long lastClickTime = 0;
 
     // ===== Tìm controller =====
     private void TimCT() {
         btn_exit = findViewById(R.id.btn_exit);
         btn_infogame = findViewById(R.id.btn_infogame);
         btn_settings = findViewById(R.id.btn_settings);
-        btn_infoPlayer = findViewById(R.id.btn_infoPlayer);
+        tv_name = findViewById(R.id.tv_name);
         btn_newgame = findViewById(R.id.btn_newgame);
         btn_highscore = findViewById(R.id.btn_highscore);
     }
-
-
 
     // ===== Info game =====
     private void InfoGame() {
@@ -52,14 +59,33 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // ===== Info Player =====
-    private void InfoPlayer() {
-        btn_infoPlayer.setOnClickListener(new View.OnClickListener() {
+    // ===== Tính năng ẩn: Nhấn 7 lần vào tên game =====
+    private void SecretAdminMode() {
+        tv_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =
-                        new Intent(MainActivity.this, InfoPlayerActivity.class);
-                startActivity(intent);
+                long currentTime = System.currentTimeMillis();
+
+                if (currentTime - lastClickTime > 2000) {
+                    tapCount = 1;
+                } else {
+                    tapCount++;
+                }
+
+                lastClickTime = currentTime;
+                if (tapCount >= 4 && tapCount < 7) {
+                    int conLai = 7 - tapCount;
+                    Toast.makeText(MainActivity.this, "Còn " + conLai + " lượt nhấn nữa", Toast.LENGTH_SHORT).show();
+                }
+
+                if (tapCount == 7) {
+                    tapCount = 0; // Reset lại
+                    Toast.makeText(MainActivity.this, "Đã mở chế độ Admin!", Toast.LENGTH_SHORT).show();
+
+                    // Chuyển sang AddQuestionActivity
+                    Intent intent = new Intent(MainActivity.this, AddQuestionActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }
@@ -87,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
 
     // ===== Dialog nhập tên + chơi =====
     private void PlayWithName() {
-
         AlertDialog.Builder builder =
                 new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("Nhập tên người chơi");
@@ -104,7 +129,8 @@ public class MainActivity extends AppCompatActivity {
                         edtName.getText().toString().trim();
 
                 if (playerName.isEmpty()) {
-                    edtName.setError("Vui lòng nhập tên");
+                    // Nếu chưa nhập thì báo lỗi (dùng Toast hoặc setError)
+                    Toast.makeText(MainActivity.this, "Vui lòng nhập tên!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -131,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -140,11 +167,14 @@ public class MainActivity extends AppCompatActivity {
         MusicManager.play(this);
 
         TimCT();
+
         InfoGame();
         Settings();
-        InfoPlayer();
         ExitGame();
         HighScore();
+
+        // Gọi hàm tính năng ẩn
+        SecretAdminMode();
 
         // Nút chơi game
         btn_newgame.setOnClickListener(new View.OnClickListener() {

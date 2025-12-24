@@ -11,15 +11,13 @@
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="82dp"
         android:layout_marginTop="104dp"
-        android:layout_marginEnd="83dp"
         android:text="AI LÀ TRIỆU PHÚ"
         android:textColor="@color/white"
+        android:clickable="true"
         android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,11 +29,10 @@
         android:background="@drawable/box_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.79">
-
+        app:layout_constraintVertical_bias="0.6">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_newgame"
@@ -85,42 +82,33 @@
         android:id="@+id/btn_settings"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        android:layout_marginTop="-28dp"
-        android:layout_marginEnd="35dp"
         android:background="@drawable/mini_button"
         android:foreground="@mipmap/setting"
-        app:layout_constraintEnd_toStartOf="@+id/btn_infoPlayer"
+        android:layout_marginStart="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/layout_mainbox"
+        app:layout_constraintStart_toStartOf="@+id/layout_mainbox"
         app:layout_constraintTop_toBottomOf="@+id/layout_mainbox" />
-
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_infoPlayer"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="-28dp"
-        android:background="@drawable/mini_button"
-        android:foreground="@mipmap/info"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_mainbox" />
-
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_exit"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="-28dp"
         android:background="@drawable/mini_button"
         android:foreground="@mipmap/exit"
         android:onClick="Exit"
-        app:layout_constraintStart_toEndOf="@+id/btn_infoPlayer"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/layout_mainbox"
+        app:layout_constraintEnd_toEndOf="@+id/layout_mainbox"
         app:layout_constraintTop_toBottomOf="@+id/layout_mainbox" />
 
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:elevation="20dp" />
+        android:elevation="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

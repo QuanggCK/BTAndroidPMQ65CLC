@@ -108,4 +108,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Tạo lại từ đầu
         onCreate(db);
     }
+    public long insertQuestion(String content, String a, String b, String c, String d,
+                               String correct, int difficulty,
+                               int rateA, int rateB, int rateC, int rateD) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        android.content.ContentValues values = new android.content.ContentValues();
+
+        values.put("content", content);
+        values.put("a", a);
+        values.put("b", b);
+        values.put("c", c);
+        values.put("d", d);
+        values.put("correct", correct); // Lưu ký tự "A", "B", "C" hoặc "D"
+        values.put("difficulty_id", difficulty);
+        values.put("rate_a", rateA);
+        values.put("rate_b", rateB);
+        values.put("rate_c", rateC);
+        values.put("rate_d", rateD);
+
+        // Trả về id của dòng vừa thêm (nếu -1 là lỗi)
+        long result = db.insert("Question", null, values);
+        db.close();
+        return result;
+    }
 }
