@@ -43,11 +43,12 @@ public class QuestionDAO {
 
     // Hàm chuyển đổi từ con trỏ Database (Cursor) sang Object (Question)
     // Dùng getColumnIndex để TỰ ĐỘNG tìm vị trí cột, không lo bị sai thứ tự
+    // ... (các phần trên giữ nguyên)
+
     private Question cursorToQuestion(Cursor c) {
         Question q = new Question();
 
         try {
-            // Lấy dữ liệu dựa trên TÊN CỘT trong DatabaseHelper
             q.id = c.getInt(c.getColumnIndexOrThrow("id"));
             q.content = c.getString(c.getColumnIndexOrThrow("content"));
             q.a = c.getString(c.getColumnIndexOrThrow("a"));
@@ -56,15 +57,15 @@ public class QuestionDAO {
             q.d = c.getString(c.getColumnIndexOrThrow("d"));
             q.correct = c.getString(c.getColumnIndexOrThrow("correct"));
 
-            // Xử lý cột difficulty_id
             int diffId = c.getInt(c.getColumnIndexOrThrow("difficulty_id"));
             q.difficulty = Difficulty.fromLevel(diffId);
 
-            // Xử lý các cột tỉ lệ khán giả (nếu cần dùng sau này)
-            // Vì có thể cột này null hoặc chưa dùng đến, ta dùng try-catch nhẹ hoặc kiểm tra
-            int idxRateA = c.getColumnIndex("rate_a");
-            if (idxRateA != -1) {
-                q.rate_a = c.getInt(idxRateA);
+
+            int indexA = c.getColumnIndex("rate_a");
+            if (indexA != -1) {
+                // "rate_a" trong ngoặc kép là tên cột trong DB
+                // q.rate_a là tên biến trong class Question
+                q.rate_a = c.getInt(indexA);
                 q.rate_b = c.getInt(c.getColumnIndex("rate_b"));
                 q.rate_c = c.getInt(c.getColumnIndex("rate_c"));
                 q.rate_d = c.getInt(c.getColumnIndex("rate_d"));
@@ -73,7 +74,6 @@ public class QuestionDAO {
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
-
         return q;
     }
 }

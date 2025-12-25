@@ -30,7 +30,6 @@ public class InfoGameActivity extends AppCompatActivity {
 
     // Hàm đổi màu chữ
     private void setGradientText(TextView tv) {
-        // Tạo shader gradient 3 màu
         Shader shader = new LinearGradient(
                 0, 0,
                 0, tv.getHeight(),

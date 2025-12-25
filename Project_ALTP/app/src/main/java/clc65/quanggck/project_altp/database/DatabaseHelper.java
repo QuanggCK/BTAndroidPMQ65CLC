@@ -7,9 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "altp.db";
-    // Tăng version lên 3 để kích hoạt onUpgrade, giúp cập nhật dữ liệu mới ngay lập tức
     private static final int DB_VERSION = 3;
-
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
@@ -120,7 +118,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put("b", b);
         values.put("c", c);
         values.put("d", d);
-        values.put("correct", correct); // Lưu ký tự "A", "B", "C" hoặc "D"
+        values.put("correct", correct);
         values.put("difficulty_id", difficulty);
         values.put("rate_a", rateA);
         values.put("rate_b", rateB);

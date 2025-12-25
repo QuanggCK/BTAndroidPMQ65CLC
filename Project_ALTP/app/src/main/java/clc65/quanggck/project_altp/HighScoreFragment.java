@@ -59,7 +59,7 @@ public class HighScoreFragment extends Fragment {
 
     private void loadData() {
         if (dao != null) {
-            List<HighScore> list = dao.getTop5();
+            List<HighScore> list = dao.getTop15();
             HighScoreAdapter adapter = new HighScoreAdapter(list);
             lvHighScore.setAdapter(adapter);
         }

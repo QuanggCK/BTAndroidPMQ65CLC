@@ -35,12 +35,12 @@ public class HighScoreDAO {
     }
 
     // ===== 2. Lấy TOP 5 theo tiền =====
-    public List<HighScore> getTop5() {
+    public List<HighScore> getTop15() {
         List<HighScore> list = new ArrayList<>();
 
         // Query sắp xếp giảm dần theo tiền (DESC)
         Cursor c = db.rawQuery(
-                "SELECT * FROM HighScore ORDER BY money DESC LIMIT 5",
+                "SELECT * FROM HighScore ORDER BY money DESC LIMIT 15",
                 null
         );
 
