@@ -29,7 +29,7 @@ public class InstructionPage1Fragment extends Fragment {
         btn_return.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                requireActivity().finish(); // QUAY LẠI SETTINGS
+                requireActivity().finish();
             }
         });
 

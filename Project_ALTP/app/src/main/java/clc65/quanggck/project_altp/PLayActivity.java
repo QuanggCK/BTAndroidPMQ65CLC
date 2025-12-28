@@ -28,15 +28,11 @@ public class PLayActivity extends AppCompatActivity {
     TextView edt_namequestion, tv_a, tv_b, tv_c, tv_d;
     TextView tv_currentquestion, tv_currentbonus;
     Button btn_pause;
-
-    // --- [MỚI] KHAI BÁO BIẾN CHO TRỢ GIÚP ---
     Button btn_help_toggle, btn_5050, btn_ratechoose;
     TextView tv_count_5050, tv_count_rate;
     LinearLayout layout_lifelines;
-
-    int count5050 = 2;       // Số lần dùng 50:50
-    int countRateChoose = 2; // Số lần dùng Ý kiến khán giả
-    // ----------------------------------------
+    int count5050 = 2;
+    int countRateChoose = 2;
 
     String playerName;
     QuestionDAO dao;
@@ -47,6 +43,7 @@ public class PLayActivity extends AppCompatActivity {
     private Question currentQuestion;
     int money = 0;
 
+    // Hàm tính tiền
     private int tinhTien(int cauSo) {
         int[] moneyTable = {
                 0,
@@ -59,6 +56,7 @@ public class PLayActivity extends AppCompatActivity {
         return moneyTable[cauSo];
     }
 
+    // Hàm tìm Controller
     private void TimCT() {
         edt_namequestion = findViewById(R.id.edt_namequestion);
         tv_a = findViewById(R.id.tv_a);
@@ -68,44 +66,36 @@ public class PLayActivity extends AppCompatActivity {
         tv_currentquestion = findViewById(R.id.tv_currentquestion);
         tv_currentbonus = findViewById(R.id.tv_currentbonus);
         btn_pause = findViewById(R.id.btn_pause);
-
-        // --- [MỚI] ÁNH XẠ CÁC VIEW TRỢ GIÚP ---
         btn_help_toggle = findViewById(R.id.btn_help_toggle);
         layout_lifelines = findViewById(R.id.layout_lifelines);
-
         btn_5050 = findViewById(R.id.btn_5050);
         tv_count_5050 = findViewById(R.id.tv_count_5050);
-
         btn_ratechoose = findViewById(R.id.btn_ratechoose);
         tv_count_rate = findViewById(R.id.tv_count_rate);
     }
 
+    // Hàm khởi tạo các giá trị ban đầu
     private void KhoiTao() {
         dao = new QuestionDAO(this);
         currentIndex = 0;
-
-        // --- [MỚI] Reset lại lượt chơi khi bắt đầu game ---
         count5050 = 2;
         countRateChoose = 2;
-        updateHelpUI(); // Cập nhật text hiển thị
-
+        updateHelpUI();
         loadQuestionForCurrentLevel();
         HienThi();
     }
 
-    // --- [MỚI] Hàm cập nhật hiển thị số lượt còn lại ---
+    // Hàm cập nhật UI giúp đỡ
     private void updateHelpUI() {
         tv_count_5050.setText("Còn: " + count5050);
         tv_count_rate.setText("Còn: " + countRateChoose);
-
-        // Làm mờ nút nếu hết lượt
         btn_5050.setEnabled(count5050 > 0);
         btn_5050.setAlpha(count5050 > 0 ? 1.0f : 0.5f);
-
         btn_ratechoose.setEnabled(countRateChoose > 0);
         btn_ratechoose.setAlpha(countRateChoose > 0 ? 1.0f : 0.5f);
     }
 
+    // Hàm hiển thị câu hỏi theo cấp độ
     private void loadQuestionForCurrentLevel() {
         Difficulty currentDiff = Difficulty.fromLevel(currentIndex + 1);
         questionList = dao.getQuestionsByDifficulty(currentDiff);
@@ -114,6 +104,7 @@ public class PLayActivity extends AppCompatActivity {
         }
     }
 
+    // Hàm hiển thị câu hỏi
     private void HienThi() {
         if (questionList == null || questionList.isEmpty()) {
             KetThuc();
@@ -121,16 +112,19 @@ public class PLayActivity extends AppCompatActivity {
         }
         currentQuestion = questionList.remove(0);
 
+        // Hiển thị lên màn hình
         edt_namequestion.setText(currentQuestion.content);
         tv_currentquestion.setText("Câu " + (currentIndex + 1));
         tv_currentbonus.setText(String.format("%,d", tinhTien(currentIndex)));
 
+        // Tạo danh sách đáp án ngẫu nhiên
         List<String> answers = new ArrayList<>();
         answers.add(currentQuestion.a);
         answers.add(currentQuestion.b);
         answers.add(currentQuestion.c);
         answers.add(currentQuestion.d);
 
+        // Lấy đáp án đúng
         correctAnswer = "";
         String dapAnDungCode = (currentQuestion.correct != null) ? currentQuestion.correct.trim().toUpperCase() : "A";
         switch (dapAnDungCode) {
@@ -140,40 +134,37 @@ public class PLayActivity extends AppCompatActivity {
             case "D": correctAnswer = currentQuestion.d; break;
             default:  correctAnswer = currentQuestion.a; break;
         }
+        // Xáo trộn danh sách đáp án
         Collections.shuffle(answers);
 
+        // Hiển thị đáp án
         tv_a.setText(answers.get(0)); tv_a.setTag(answers.get(0));
         tv_b.setText(answers.get(1)); tv_b.setTag(answers.get(1));
         tv_c.setText(answers.get(2)); tv_c.setTag(answers.get(2));
         tv_d.setText(answers.get(3)); tv_d.setTag(answers.get(3));
-
         ResetUI();
         BatSuKien();
     }
 
+    // Hàm reset UI
     private void ResetUI() {
         tv_a.setBackgroundResource(R.drawable.mini_button);
         tv_b.setBackgroundResource(R.drawable.mini_button);
         tv_c.setBackgroundResource(R.drawable.mini_button);
         tv_d.setBackgroundResource(R.drawable.mini_button);
-
         tv_a.setEnabled(true);
         tv_b.setEnabled(true);
         tv_c.setEnabled(true);
         tv_d.setEnabled(true);
-
-        // --- [MỚI] Hiện lại tất cả đáp án (vì câu trước có thể đã dùng 50:50) ---
         tv_a.setVisibility(View.VISIBLE);
         tv_b.setVisibility(View.VISIBLE);
         tv_c.setVisibility(View.VISIBLE);
         tv_d.setVisibility(View.VISIBLE);
-
-        // Đóng menu trợ giúp
         layout_lifelines.setVisibility(View.GONE);
     }
 
+    // Hàm bắt sự kiện khi chọn đáp án
     private void BatSuKien() {
-        // --- LOGIC CHỌN ĐÁP ÁN (GIỮ NGUYÊN) ---
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -192,6 +183,7 @@ public class PLayActivity extends AppCompatActivity {
                         public void run() { SangCauMoi(); }
                     }, 1000);
                 } else {
+                    MusicManager.stop();
                     v.setBackgroundResource(R.drawable.wrong_bg);
                     rungMay(400);
                     HienThiDapAnDung();
@@ -203,112 +195,78 @@ public class PLayActivity extends AppCompatActivity {
             }
         };
 
+        // Xử lý sự kiện cho các TextView
         tv_a.setOnClickListener(listener);
         tv_b.setOnClickListener(listener);
         tv_c.setOnClickListener(listener);
         tv_d.setOnClickListener(listener);
 
-        // --- [MỚI] SỰ KIỆN NÚT SOS ---
-        btn_help_toggle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (layout_lifelines.getVisibility() == View.VISIBLE) {
-                    layout_lifelines.setVisibility(View.GONE);
-                } else {
-                    layout_lifelines.setVisibility(View.VISIBLE);
-                }
+        btn_help_toggle.setOnClickListener(v -> layout_lifelines.setVisibility(layout_lifelines.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE));
+
+        // Hàm
+        btn_5050.setOnClickListener(v -> {
+            if (count5050 > 0) {
+                dungQuyen5050();
+                count5050--;
+                updateHelpUI();
+                layout_lifelines.setVisibility(View.GONE);
             }
         });
 
-        // --- [MỚI] SỰ KIỆN 50:50 ---
-        btn_5050.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (count5050 > 0) {
-                    dungQuyen5050();
-                    count5050--;
-                    updateHelpUI();
-                    layout_lifelines.setVisibility(View.GONE);
-                }
-            }
-        });
-
-        // --- [MỚI] SỰ KIỆN KHÁN GIẢ ---
-        btn_ratechoose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (countRateChoose > 0) {
-                    dungQuyenKhaanGia();
-                    countRateChoose--;
-                    updateHelpUI();
-                    layout_lifelines.setVisibility(View.GONE);
-                }
+        btn_ratechoose.setOnClickListener(v -> {
+            if (countRateChoose > 0) {
+                dungQuyenKhaanGia();
+                countRateChoose--;
+                updateHelpUI();
+                layout_lifelines.setVisibility(View.GONE);
             }
         });
     }
 
-    // ==========================================
-    // KHU VỰC CÁC HÀM XỬ LÝ QUYỀN TRỢ GIÚP
-    // ==========================================
-
-    // 1. Hàm 50:50
+    // Hàm logic sử dụng trợ giúp 5050
     private void dungQuyen5050() {
-        // Tìm danh sách các đáp án SAI
         List<TextView> wrongAnswers = new ArrayList<>();
         if (!tv_a.getTag().equals(correctAnswer)) wrongAnswers.add(tv_a);
         if (!tv_b.getTag().equals(correctAnswer)) wrongAnswers.add(tv_b);
         if (!tv_c.getTag().equals(correctAnswer)) wrongAnswers.add(tv_c);
         if (!tv_d.getTag().equals(correctAnswer)) wrongAnswers.add(tv_d);
-
-        // Trộn ngẫu nhiên danh sách sai
         Collections.shuffle(wrongAnswers);
-
-        // Ẩn 2 cái đầu tiên
         wrongAnswers.get(0).setVisibility(View.INVISIBLE);
         wrongAnswers.get(1).setVisibility(View.INVISIBLE);
-
-        // Đảm bảo không click được vào vùng đã ẩn
         wrongAnswers.get(0).setEnabled(false);
         wrongAnswers.get(1).setEnabled(false);
     }
 
-    // 2. Hàm Ý kiến khán giả (Có lấy từ DB)
+    // Hàm logic sử dụng trợ giúp khán giả theo tỉ lệ
     private void dungQuyenKhaanGia() {
         StringBuilder result = new StringBuilder();
-
-        // Lấy tỷ lệ từ Object Question (Đã update ở bước trước)
         int rA = currentQuestion.rate_a;
         int rB = currentQuestion.rate_b;
         int rC = currentQuestion.rate_c;
         int rD = currentQuestion.rate_d;
 
-        // Nếu DB chưa có dữ liệu (toàn bộ = 0) -> Dùng Random
         if (rA == 0 && rB == 0 && rC == 0 && rD == 0) {
             fakeAudienceData(result);
         } else {
-            // Logic hiển thị: Nếu đáp án đó đang hiện thì lấy số từ DB, nếu ẩn (do 50:50) thì hiện 0%
             result.append("A: ").append(tv_a.getVisibility() == View.VISIBLE ? rA : 0).append("%\n");
             result.append("B: ").append(tv_b.getVisibility() == View.VISIBLE ? rB : 0).append("%\n");
             result.append("C: ").append(tv_c.getVisibility() == View.VISIBLE ? rC : 0).append("%\n");
             result.append("D: ").append(tv_d.getVisibility() == View.VISIBLE ? rD : 0).append("%\n");
         }
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Ý kiến trường quay");
-        builder.setMessage(result.toString());
-        builder.setPositiveButton("Cảm ơn", null);
-        builder.show();
+        new AlertDialog.Builder(this)
+                .setTitle("Ý kiến trường quay")
+                .setMessage(result.toString())
+                .setPositiveButton("Cảm ơn", null)
+                .show();
     }
 
-    // 3. Hàm tạo dữ liệu giả (Fallback khi DB chưa có)
+    // Tạo dữ liệu trường quay
     private void fakeAudienceData(StringBuilder result) {
-        int percentCorrect = 50 + (int)(Math.random() * 30); // 50-80%
+        int percentCorrect = 50 + (int)(Math.random() * 30);
         int percentRest = 100 - percentCorrect;
-
         int w1 = (int)(Math.random() * percentRest);
         int w2 = (int)(Math.random() * (percentRest - w1));
         int w3 = percentRest - w1 - w2;
-
         List<Integer> wrongPercents = new ArrayList<>();
         wrongPercents.add(w1); wrongPercents.add(w2); wrongPercents.add(w3);
         Collections.shuffle(wrongPercents);
@@ -316,15 +274,13 @@ public class PLayActivity extends AppCompatActivity {
         int wrongIndex = 0;
         TextView[] arrTV = {tv_a, tv_b, tv_c, tv_d};
         String[] arrName = {"A", "B", "C", "D"};
-
         for (int i = 0; i < 4; i++) {
             result.append(arrName[i]).append(": ");
             if (arrTV[i].getTag().equals(correctAnswer)) {
                 result.append(percentCorrect);
             } else {
-                if (arrTV[i].getVisibility() == View.INVISIBLE) {
-                    result.append("0");
-                } else {
+                if (arrTV[i].getVisibility() == View.INVISIBLE) result.append("0");
+                else {
                     result.append(wrongPercents.get(wrongIndex));
                     wrongIndex++;
                 }
@@ -333,14 +289,13 @@ public class PLayActivity extends AppCompatActivity {
         }
     }
 
-    // ==========================================
-
     private void HienThiDapAnDung() {
         checkAndHighLight(tv_a);
         checkAndHighLight(tv_b);
         checkAndHighLight(tv_c);
         checkAndHighLight(tv_d);
     }
+
 
     private void checkAndHighLight(TextView tv) {
         if (tv.getTag() != null && tv.getTag().toString().equals(correctAnswer)) {
@@ -362,15 +317,15 @@ public class PLayActivity extends AppCompatActivity {
     }
 
     private void hoiChacChan() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(PLayActivity.this);
-        builder.setTitle("Chúc mừng!");
-        builder.setMessage("Bạn đã vượt qua mốc quan trọng câu số " + currentIndex + ".\n" +
-                "Bạn đang có " + String.format("%,d", money) + " VND.\n" +
-                "Bạn có muốn chơi tiếp không?");
-        builder.setCancelable(false);
-        builder.setPositiveButton("Đi tiếp", (dialog, which) -> binhThuong());
-        builder.setNegativeButton("Dừng lại", (dialog, which) -> KetThuc());
-        builder.show();
+        new AlertDialog.Builder(PLayActivity.this)
+                .setTitle("Chúc mừng!")
+                .setMessage("Bạn đã vượt qua mốc quan trọng câu số " + currentIndex + ".\n" +
+                        "Bạn đang có " + String.format("%,d", money) + " VND.\n" +
+                        "Bạn có muốn chơi tiếp không?")
+                .setCancelable(false)
+                .setPositiveButton("Đi tiếp", (dialog, which) -> binhThuong())
+                .setNegativeButton("Dừng lại", (dialog, which) -> KetThuc())
+                .show();
     }
 
     private void binhThuong() {
@@ -379,6 +334,7 @@ public class PLayActivity extends AppCompatActivity {
     }
 
     private void KetThuc() {
+        MusicManager.stop();
         Intent intent = new Intent(PLayActivity.this, AnnounceActivity.class);
         intent.putExtra("money", money);
         intent.putExtra("player_name", playerName);
@@ -388,6 +344,8 @@ public class PLayActivity extends AppCompatActivity {
     }
 
     private void PauseGame() {
+        MusicManager.pause();
+
         btn_pause.setEnabled(false);
         Intent intent = new Intent(PLayActivity.this, PauseActivity.class);
         startActivity(intent);
@@ -422,9 +380,17 @@ public class PLayActivity extends AppCompatActivity {
         });
     }
 
+
     @Override
     protected void onResume() {
         super.onResume();
         btn_pause.setEnabled(true);
+        MusicManager.play(this, R.raw.ingame,true);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MusicManager.pause();
     }
 }

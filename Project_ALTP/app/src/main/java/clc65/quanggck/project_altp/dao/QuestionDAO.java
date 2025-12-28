@@ -20,14 +20,14 @@ public class QuestionDAO {
         db = new DatabaseHelper(context).getReadableDatabase();
     }
 
-    // Lấy câu hỏi theo độ khó (Level 1 -> 15)
+    // Lấy câu hỏi theo độ khó (1-15)
     public List<Question> getQuestionsByDifficulty(Difficulty difficulty) {
         List<Question> list = new ArrayList<>();
 
-        // Difficulty Enum có value là 1,2,3... khớp với difficulty_id trong DB
+        // Gán value trong Difficulty với levelID
         int levelId = difficulty.value;
 
-        // Query tìm câu hỏi có difficulty_id tương ứng
+        // Truy vấn dữ liệu từ Database
         Cursor c = db.rawQuery(
                 "SELECT * FROM Question WHERE difficulty_id = ?",
                 new String[]{ String.valueOf(levelId) }
@@ -42,12 +42,10 @@ public class QuestionDAO {
     }
 
     // Hàm chuyển đổi từ con trỏ Database (Cursor) sang Object (Question)
-    // Dùng getColumnIndex để TỰ ĐỘNG tìm vị trí cột, không lo bị sai thứ tự
-    // ... (các phần trên giữ nguyên)
-
     private Question cursorToQuestion(Cursor c) {
         Question q = new Question();
 
+        // Lấy dữ liệu từ con trỏ
         try {
             q.id = c.getInt(c.getColumnIndexOrThrow("id"));
             q.content = c.getString(c.getColumnIndexOrThrow("content"));
@@ -60,11 +58,9 @@ public class QuestionDAO {
             int diffId = c.getInt(c.getColumnIndexOrThrow("difficulty_id"));
             q.difficulty = Difficulty.fromLevel(diffId);
 
-
             int indexA = c.getColumnIndex("rate_a");
+            // Nếu cột rate_a không tồn tại thì trả về -1
             if (indexA != -1) {
-                // "rate_a" trong ngoặc kép là tên cột trong DB
-                // q.rate_a là tên biến trong class Question
                 q.rate_a = c.getInt(indexA);
                 q.rate_b = c.getInt(c.getColumnIndex("rate_b"));
                 q.rate_c = c.getInt(c.getColumnIndex("rate_c"));

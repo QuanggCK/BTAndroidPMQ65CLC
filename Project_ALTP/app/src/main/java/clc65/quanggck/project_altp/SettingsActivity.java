@@ -16,12 +16,9 @@ import androidx.appcompat.app.AppCompatActivity;
 public class SettingsActivity extends AppCompatActivity {
 
     Button btn_return, btn_mute, btn_guide, btn_vibrate;
-
-    // Biến lưu trạng thái rung (Mặc định là true - đang bật)
-    // Tốt nhất bạn nên lưu biến này vào SharedPreferences hoặc một class Manager giống MusicManager để dùng toàn app
     public static boolean isVibrateEnabled = true;
 
-    // ===== Ánh xạ View =====
+    // Hàm tìm Controller
     private void TimCT() {
         btn_return = findViewById(R.id.btn_return);
         btn_mute   = findViewById(R.id.btn_mute);
@@ -29,53 +26,62 @@ public class SettingsActivity extends AppCompatActivity {
         btn_vibrate = findViewById(R.id.btn_vibrate);
     }
 
-    // ===== Quay lại Activity trước =====
+    // Hàm quay về
     private void Return() {
         finish();
     }
 
-    // ===== Bật / tắt âm thanh =====
+    // Hàm mở / tắt âm thanh
     private void Mute() {
         if (MusicManager.isMuted()) {
             MusicManager.unmute();
+            updateMuteButtonUI(); // Cập nhật giao diện nút
             Toast.makeText(this, "Đã mở âm thanh", Toast.LENGTH_SHORT).show();
         } else {
             MusicManager.mute();
+            updateMuteButtonUI(); // Cập nhật giao diện nút
             Toast.makeText(this, "Đã tắt âm thanh", Toast.LENGTH_SHORT).show();
         }
     }
 
-    // ===== Mở / tắt chế độ rung =====
+    // Hiển thị trạng thái nút
+    private void updateMuteButtonUI() {
+        if (MusicManager.isMuted()) {
+            btn_mute.setText("Bật âm thanh");
+        } else {
+            btn_mute.setText("Tắt âm thanh");
+        }
+    }
+
+    // Hiển thị trạng thái rung
     private void Vibrate() {
-        // Đảo ngược trạng thái (Đang bật -> Tắt, Đang tắt -> Bật)
         isVibrateEnabled = !isVibrateEnabled;
 
         if (isVibrateEnabled) {
             Toast.makeText(this, "Đã BẬT rung", Toast.LENGTH_SHORT).show();
-            // Rung nhẹ 1 cái để báo hiệu
             rungMay(300);
+            btn_vibrate.setText("Tắt rung");
         } else {
             Toast.makeText(this, "Đã TẮT rung", Toast.LENGTH_SHORT).show();
+            btn_vibrate.setText("Bật rung");
         }
     }
 
-    // Hàm hỗ trợ rung máy (Dùng chung cho cả app sau này)
+    // Hàm rung máy
     private void rungMay(long milliseconds) {
         if (isVibrateEnabled) {
             Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             if (v != null && v.hasVibrator()) {
-                // Kiểm tra version Android để dùng hàm phù hợp
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    // Cho Android 8.0 trở lên
                     v.vibrate(VibrationEffect.createOneShot(milliseconds, VibrationEffect.DEFAULT_AMPLITUDE));
                 } else {
-                    // Cho Android cũ hơn
                     v.vibrate(milliseconds);
                 }
             }
         }
     }
 
+    // Hàm hướng dẫn
     private void Guide() {
         Intent intent = new Intent(SettingsActivity.this, InstructionActivity.class);
         startActivity(intent);
@@ -88,6 +94,9 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         TimCT();
+
+        updateMuteButtonUI();
+        btn_vibrate.setText(isVibrateEnabled ? "Tắt rung" : "Bật rung");
 
         btn_return.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,5 +125,18 @@ public class SettingsActivity extends AppCompatActivity {
                 Guide();
             }
         });
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MusicManager.play(this, R.raw.intro, false);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MusicManager.pause();
     }
 }

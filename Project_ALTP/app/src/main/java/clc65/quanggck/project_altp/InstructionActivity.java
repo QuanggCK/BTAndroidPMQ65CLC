@@ -12,11 +12,13 @@ public class InstructionActivity extends AppCompatActivity {
     ViewPager2 viewPager;
     WormDotsIndicator dotsIndicator;
 
+    // Hàm tìm Controller
     public void TimCT() {
         viewPager = findViewById(R.id.viewPagerInstruction);
         dotsIndicator = findViewById(R.id.dotsIndicator);
     }
 
+    // Hàm setup ViewPager + gắn chấm tròn
     public void SetUpViewPager() {
         InstructionPagerAdapter adapter = new InstructionPagerAdapter(this);
         viewPager.setAdapter(adapter);

@@ -11,6 +11,7 @@ public class InstructionPagerAdapter extends FragmentStateAdapter {
         super(fa);
     }
 
+    // Hàm tạo Fragment
     @NonNull
     @Override
     public Fragment createFragment(int position) {
@@ -20,7 +21,7 @@ public class InstructionPagerAdapter extends FragmentStateAdapter {
             return new InstructionPage2Fragment();
         }
     }
-
+    // Số lượng Fragment
     @Override
     public int getItemCount() {
         return 2;

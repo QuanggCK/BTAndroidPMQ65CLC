@@ -19,7 +19,7 @@ public class HighScoreDAO {
         db = new DatabaseHelper(context).getWritableDatabase();
     }
 
-    // ===== 1. Hàm này dùng để LƯU KẾT QUẢ CUỐI CÙNG (Dùng trong AnnounceActivity) =====
+    // Lưu kết quả
     public void insertHighScore(String name, int money) {
         ContentValues cv = new ContentValues();
         cv.put("player_name", name);
@@ -34,26 +34,22 @@ public class HighScoreDAO {
         db.insert("HighScore", null, cv);
     }
 
-    // ===== 2. Lấy TOP 5 theo tiền =====
+    // Lưu top 15 theo tiền
     public List<HighScore> getTop15() {
         List<HighScore> list = new ArrayList<>();
 
-        // Query sắp xếp giảm dần theo tiền (DESC)
         Cursor c = db.rawQuery(
                 "SELECT * FROM HighScore ORDER BY money DESC LIMIT 15",
                 null
         );
-
+        // Tránh lỗi NullPointerException
         if (c != null) {
             while (c.moveToNext()) {
                 HighScore h = new HighScore();
-
                 // Lấy dữ liệu
                 h.id = c.getInt(c.getColumnIndexOrThrow("id"));
                 h.playerName = c.getString(c.getColumnIndexOrThrow("player_name"));
                 h.money = c.getInt(c.getColumnIndexOrThrow("money"));
-
-                // Nếu model HighScore của bạn có biến score thì lấy, ko thì thôi
                 try {
                     h.score = c.getInt(c.getColumnIndexOrThrow("score"));
                 } catch (Exception e) {

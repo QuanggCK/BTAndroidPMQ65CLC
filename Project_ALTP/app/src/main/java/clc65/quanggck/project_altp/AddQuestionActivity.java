@@ -20,7 +20,7 @@ public class AddQuestionActivity extends AppCompatActivity {
     private EditText tv_a, tv_b, tv_c, tv_d;
     private Spinner sp_diff;
 
-    // 1. KHAI BÁO BIẾN DATABASE
+    // Khai báo Database
     private DatabaseHelper dbHelper;
 
     @Override
@@ -28,7 +28,7 @@ public class AddQuestionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_question);
 
-        // 2. KHỞI TẠO DATABASE
+        // Tạo Database
         dbHelper = new DatabaseHelper(this);
 
         TimCT();
@@ -36,8 +36,7 @@ public class AddQuestionActivity extends AppCompatActivity {
         addEvents();
     }
 
-    // ... (Giữ nguyên TimCT, setupSpinner, addEvents, randomRateQuestion) ...
-
+    // Hàm tìm các Controller
     private void TimCT() {
         btn_return = findViewById(R.id.btn_return);
         btn_confirm = findViewById(R.id.btn_confirm);
@@ -49,6 +48,7 @@ public class AddQuestionActivity extends AppCompatActivity {
         sp_diff = findViewById(R.id.sp_diff);
     }
 
+    // Hàm hiện thị Spinner độ khó
     private void setupSpinner() {
         String[] levels = new String[15];
         for (int i = 0; i < 15; i++) levels[i] = String.valueOf(i + 1);
@@ -57,13 +57,16 @@ public class AddQuestionActivity extends AppCompatActivity {
         sp_diff.setAdapter(adapter);
     }
 
+    // Hàm thêm sự kiện
     private void addEvents() {
         btn_return.setOnClickListener(v -> QuayVe());
         btn_confirm.setOnClickListener(v -> XacNhanThem());
     }
 
+    // Hàm quay về
     private void QuayVe() { finish(); }
 
+    // Hàm sinh tỷ lệ ngẫu nhiên
     private int[] randomRateQuestion() {
         Random rand = new Random();
         int a, b, c, d;
@@ -77,7 +80,7 @@ public class AddQuestionActivity extends AppCompatActivity {
         return new int[]{a, b, c, d};
     }
 
-    // 3. CẬP NHẬT HÀM XÁC NHẬN THÊM
+    // Hàm xác nhận thêm câu hỏi
     private void XacNhanThem() {
         String content = edt_namequestion.getText().toString().trim();
         String strA = tv_a.getText().toString().trim();
@@ -96,21 +99,13 @@ public class AddQuestionActivity extends AppCompatActivity {
         // Sinh tỷ lệ
         int[] rates = randomRateQuestion();
 
-        // --- LƯU VÀO DATABASE ---
+        // Lưu vào Database
         try {
-            // Vì form nhập liệu quy định:
-            // tv_a là ĐÚNG -> lưu vào cột 'a', và cột 'correct' là "A"
-            // tv_b là Sai -> lưu vào cột 'b'
-            // tv_c là Sai -> lưu vào cột 'c'
-            // tv_d là Sai -> lưu vào cột 'd'
-            // rates[0] là rate cao nhất -> gán cho A (vì A đúng)
-
             long result = dbHelper.insertQuestion(
                     content,
-                    strA, strB, strC, strD, // 4 đáp án
-                    "A",                    // Đáp án đúng luôn là A (theo form nhập)
-                    level,                  // Độ khó
-                    rates[0], rates[1], rates[2], rates[3] // Tỷ lệ (A, B, C, D)
+                    strA, strB, strC, strD, "A", // Có 4 đáp án và đáp án đầu tiên là đúng
+                    level,
+                    rates[0], rates[1], rates[2], rates[3]
             );
 
             if (result != -1) {
@@ -125,6 +120,7 @@ public class AddQuestionActivity extends AppCompatActivity {
         }
     }
 
+    // Dọn sạch ô nhập liệu sau khi xác nhận
     private void clearInputs() {
         edt_namequestion.setText("");
         tv_a.setText("");

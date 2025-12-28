@@ -15,14 +15,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        // 1. Tạo bảng Difficulty (Độ khó)
+        // Tạo bảng Difficulty
         db.execSQL(
                 "CREATE TABLE Difficulty (" +
                         "id INTEGER PRIMARY KEY," +
                         "name TEXT NOT NULL)"
         );
 
-        // 2. Tạo bảng Question (Câu hỏi) - Đầy đủ cột rate
+        // Tạo bảng Question
         db.execSQL(
                 "CREATE TABLE Question (" +
                         "id INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -33,13 +33,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         "d TEXT NOT NULL," +
                         "correct TEXT NOT NULL," +
                         "difficulty_id INTEGER NOT NULL," +
-                        "rate_a INTEGER DEFAULT 0," + // Tỷ lệ chọn A (0-100)
-                        "rate_b INTEGER DEFAULT 0," + // Tỷ lệ chọn B
-                        "rate_c INTEGER DEFAULT 0," + // Tỷ lệ chọn C
-                        "rate_d INTEGER DEFAULT 0)"   // Tỷ lệ chọn D
+                        "rate_a INTEGER DEFAULT 0," +
+                        "rate_b INTEGER DEFAULT 0," +
+                        "rate_c INTEGER DEFAULT 0," +
+                        "rate_d INTEGER DEFAULT 0)"
         );
 
-        // 3. Tạo bảng HighScore (Điểm cao)
+        // Tạo bảng HighScore
         db.execSQL(
                 "CREATE TABLE HighScore (" +
                         "id INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -49,7 +49,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         "createdAt INTEGER NOT NULL)"
         );
 
-        // 4. Thêm dữ liệu mẫu cho Difficulty (Level 1 -> 15)
+        // Thêm dữ liệu vào bảng Difficulty
         for (int i = 1; i <= 15; i++) {
             db.execSQL("INSERT INTO Difficulty(id, name) VALUES (" + i + ", 'LEVEL_" + i + "')");
         }
@@ -57,7 +57,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String sql = "INSERT INTO Question(content, a, b, c, d, correct, difficulty_id, rate_a, rate_b, rate_c, rate_d) VALUES ";
 
-        // --- DỄ (1-5) ---
+        // 5 câu dễ
         // Câu 1: Đáp án A
         sql += "('Đâu là thủ đô của Việt Nam?', 'Hà Nội', 'TP. Hồ Chí Minh', 'Đà Nẵng', 'Cần Thơ', 'A', 1, 90, 5, 3, 2),";
         // Câu 2: Đáp án C
@@ -69,7 +69,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Câu 5: Đáp án C
         sql += "('Trong truyện cổ tích, ai là người nhặt được quả thị?', 'Tấm', 'Cám', 'Bà lão', 'Ông Bụt', 'C', 5, 15, 10, 65, 10),";
 
-        // --- TRUNG BÌNH (6-10) ---
+        // 5 câu trung bình
         // Câu 6: Đáp án A
         sql += "('Đỉnh núi nào cao nhất Việt Nam?', 'Fansipan', 'Pu Si Lung', 'Bạch Mộc Lương Tử', 'Pu Ta Leng', 'A', 6, 60, 15, 15, 10),";
         // Câu 7: Đáp án C
@@ -81,7 +81,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Câu 10: Đáp án C
         sql += "('Tác giả của tác phẩm \"Truyện Kiều\" là ai?', 'Nguyễn Khuyến', 'Nguyễn Trãi', 'Nguyễn Du', 'Nguyễn Bỉnh Khiêm', 'C', 10, 10, 15, 60, 15),";
 
-        // --- KHÓ (11-15) ---
+        // 5 câu cuối
         // Câu 11: Đáp án C
         sql += "('Nguyên tố hóa học nào có ký hiệu là Fe?', 'Kẽm', 'Đồng', 'Sắt', 'Chì', 'C', 11, 15, 15, 50, 20),";
         // Câu 12: Đáp án B
@@ -125,7 +125,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put("rate_c", rateC);
         values.put("rate_d", rateD);
 
-        // Trả về id của dòng vừa thêm (nếu -1 là lỗi)
         long result = db.insert("Question", null, values);
         db.close();
         return result;

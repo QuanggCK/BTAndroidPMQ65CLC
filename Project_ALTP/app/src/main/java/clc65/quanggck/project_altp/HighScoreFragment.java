@@ -20,12 +20,11 @@ import clc65.quanggck.project_altp.model.HighScore;
 
 public class HighScoreFragment extends Fragment {
 
-    // Khai báo biến
     ListView lvHighScore;
     Button btnReturn;
     HighScoreDAO dao;
 
-    // 1. Hàm TimCT cho Fragment (Ánh xạ ListView và Nút quay lại)
+    // 1. Hàm tìm COntroller cho Fragment
     private void TimCT(View view) {
         lvHighScore = view.findViewById(R.id.lv_highscore);
         btnReturn = view.findViewById(R.id.btn_return);
@@ -35,28 +34,21 @@ public class HighScoreFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_high_score, container, false);
-
-        TimCT(view); // Gọi hàm ánh xạ
-
+        TimCT(view);
         dao = new HighScoreDAO(getContext());
         loadData();
-
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Quay lại màn hình trước
                 if (getParentFragmentManager().getBackStackEntryCount() > 0) {
                     getParentFragmentManager().popBackStack();
-                } else {
-                    // Nếu Fragment được nhúng trực tiếp thì có thể cần finish Activity chứa nó
-                    // getActivity().finish();
                 }
             }
         });
-
         return view;
     }
 
+    // Hiển thị dữ liệu lên ListView
     private void loadData() {
         if (dao != null) {
             List<HighScore> list = dao.getTop15();
@@ -65,7 +57,7 @@ public class HighScoreFragment extends Fragment {
         }
     }
 
-    // ===== ADAPTER =====
+    // Tạo Adapter
     class HighScoreAdapter extends BaseAdapter {
         List<HighScore> dataList;
 
@@ -92,7 +84,7 @@ public class HighScoreFragment extends Fragment {
         public View getView(int position, View convertView, ViewGroup parent) {
             ViewHolder holder;
 
-            // Nếu view chưa được tạo thì tạo mới và ánh xạ (TimCT)
+            // Nếu view chưa được tạo thì tạo mới và ánh xạ
             if (convertView == null) {
                 convertView = LayoutInflater.from(getContext())
                         .inflate(R.layout.item_high_score, parent, false);
@@ -102,7 +94,7 @@ public class HighScoreFragment extends Fragment {
 
                 convertView.setTag(holder);
             } else {
-                // Nếu đã có thì lấy lại holder cũ (không cần findView lại -> mượt hơn)
+                // Nếu đã có thì lấy lại View cũ
                 holder = (ViewHolder) convertView.getTag();
             }
 
@@ -110,7 +102,7 @@ public class HighScoreFragment extends Fragment {
             HighScore item = dataList.get(position);
             holder.tvName.setText(item.playerName);
 
-
+            // Đặt định dạng tiền tệ cho score
             String formattedMoney = String.format("%,d VND", item.money);
             holder.tvScore.setText(formattedMoney);
 
