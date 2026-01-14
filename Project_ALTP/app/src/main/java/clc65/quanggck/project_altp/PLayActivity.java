@@ -2,12 +2,12 @@ package clc65.quanggck.project_altp;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.speech.tts.TextToSpeech; // <--- MỚI
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale; // <--- MỚI
 
 import clc65.quanggck.project_altp.dao.QuestionDAO;
 import clc65.quanggck.project_altp.model.Difficulty;
@@ -33,6 +34,10 @@ public class PLayActivity extends AppCompatActivity {
     LinearLayout layout_lifelines;
     int count5050 = 2;
     int countRateChoose = 2;
+
+    // --- KHAI BÁO BIẾN TTS ---
+    private TextToSpeech tts;
+    // -------------------------
 
     String playerName;
     QuestionDAO dao;
@@ -104,6 +109,23 @@ public class PLayActivity extends AppCompatActivity {
         }
     }
 
+    // --- HÀM ĐỌC CÂU HỎI (MỚI THÊM) ---
+    private void docCauHoi() {
+        if (tts == null || currentQuestion == null) return;
+
+        // Nội dung đọc: Câu số X. Nội dung. Phương án A...
+        String noiDung = "Câu số " + (currentIndex + 1) + ". " +
+                currentQuestion.content + ". " +
+                "Phương án A. " + tv_a.getText().toString() + ". " +
+                "Phương án B. " + tv_b.getText().toString() + ". " +
+                "Phương án C. " + tv_c.getText().toString() + ". " +
+                "Phương án D. " + tv_d.getText().toString();
+
+        // QUEUE_FLUSH: Ngắt câu cũ đọc câu mới ngay lập tức
+        tts.speak(noiDung, TextToSpeech.QUEUE_FLUSH, null, null);
+    }
+    // ----------------------------------
+
     // Hàm hiển thị câu hỏi
     private void HienThi() {
         if (questionList == null || questionList.isEmpty()) {
@@ -143,6 +165,11 @@ public class PLayActivity extends AppCompatActivity {
         tv_c.setText(answers.get(2)); tv_c.setTag(answers.get(2));
         tv_d.setText(answers.get(3)); tv_d.setTag(answers.get(3));
         ResetUI();
+
+        // --- GỌI HÀM ĐỌC ---
+        docCauHoi();
+        // -------------------
+
         BatSuKien();
     }
 
@@ -168,6 +195,10 @@ public class PLayActivity extends AppCompatActivity {
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
+                // --- KHI BẤM NÚT THÌ NGỪNG ĐỌC ---
+                if (tts != null) tts.stop();
+                // ---------------------------------
+
                 if (v.getTag() == null) return;
                 String chosenAnswer = (String) v.getTag();
                 boolean isCorrect = chosenAnswer.equals(correctAnswer);
@@ -334,6 +365,7 @@ public class PLayActivity extends AppCompatActivity {
     }
 
     private void KetThuc() {
+        if (tts != null) tts.stop();
         MusicManager.stop();
         Intent intent = new Intent(PLayActivity.this, AnnounceActivity.class);
         intent.putExtra("money", money);
@@ -344,6 +376,7 @@ public class PLayActivity extends AppCompatActivity {
     }
 
     private void PauseGame() {
+        if (tts != null) tts.stop();
         MusicManager.pause();
 
         btn_pause.setEnabled(false);
@@ -378,6 +411,19 @@ public class PLayActivity extends AppCompatActivity {
                 PauseGame();
             }
         });
+
+        tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS) {
+                    int result = tts.setLanguage(new Locale("vi"));
+                    // Khi khởi tạo xong thì đọc ngay câu đầu tiên
+                    if (result != TextToSpeech.LANG_MISSING_DATA && result != TextToSpeech.LANG_NOT_SUPPORTED) {
+                        docCauHoi();
+                    }
+                }
+            }
+        });
     }
 
 
@@ -392,5 +438,17 @@ public class PLayActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         MusicManager.pause();
+        if (tts != null) {
+            tts.stop();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (tts != null) {
+            tts.stop();
+            tts.shutdown();
+        }
+        super.onDestroy();
     }
 }

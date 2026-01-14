@@ -108,7 +108,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sql1 += "('Nước nào có dân số đông nhất thế giới (2023)?', 'Trung Quốc', 'Mỹ', 'Ấn Độ', 'Indonesia', 'C', 5, 25, 20, 45, 10),";
         sql1 += "('Kim tự tháp Giza nằm ở nước nào?', 'Ai Cập', 'Hy Lạp', 'Thổ Nhĩ Kỳ', 'Iran', 'A', 5, 80, 10, 5, 5)";
 
-        // Thực thi đợt 1 (Cắt bỏ dấu phẩy cuối cùng)
         db.execSQL(sql1);
 
 
